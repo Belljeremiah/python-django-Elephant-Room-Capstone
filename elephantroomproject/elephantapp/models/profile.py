@@ -6,16 +6,16 @@ from django.dispatch import receiver
 class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    age = models.IntegerField()
-    relationship_status = models.CharField(max_length=55)
-    political_affiliation = models.CharField(max_length=25)
-    evidential_preference = models.CharField(max_length=25)
+    age = models.IntegerField(None, null=True)
+    relationship_status = models.CharField(max_length=55, null=True)
+    political_affiliation = models.CharField(max_length=25, null=True)
+    evidential_preference = models.CharField(max_length=25, null=True)
     # department = models.ForeignKey(Department, on_delete=models.CASCADE)
-    debate_style_preference = models.CharField(max_length=25)
-    avatar_image = models.CharField(max_length=100)
-    theological_affiliation = models.CharField(max_length=50)
-    is_online = models.BooleanField()
-    is_neutral_chaotic = models.BooleanField()
+    debate_style_preference = models.CharField(max_length=25, null=True)
+    avatar_image = models.CharField(max_length=100, null=True)
+    theological_affiliation = models.CharField(max_length=50, null=True)
+    is_online = models.BooleanField(null=True)
+    is_neutral_chaotic = models.BooleanField(null=True)
     
 
     class Meta:
