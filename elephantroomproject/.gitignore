@@ -1,0 +1,6 @@
+*.pyc
+__pycache__
+migrations
+.vscode/
+elephRoomEnv/
+db.sqlite3
