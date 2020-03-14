@@ -1,0 +1,18 @@
+[
+    {
+      "model": "elephantapp.profile",
+      "pk": 1,
+      "fields": {
+        "relationship_status": "Michelle",
+        "political_affiliation": "Johnson",
+        "evidential_preference": "2014-04-05",
+        "is_online": false,
+        "user_id": 1,
+        "age": 23,
+        "debate_style_preference": "None",
+        "avatar_image": "None",
+        "theological_affiliation": "None",
+        "is_neutral_chaotic": false
+      }
+    }
+  ]
