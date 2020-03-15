@@ -4,6 +4,6 @@ from .views import *
 app_name = "elephantapp"
 
 urlpatterns = [
-    path('', topic_list, name='home'),
+    path('', home, name='home'),
     path('topics/', topic_list, name='topics'),
 ]
