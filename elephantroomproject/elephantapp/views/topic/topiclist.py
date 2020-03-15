@@ -1,7 +1,7 @@
 import sqlite3
 from django.shortcuts import render
 from elephantapp.models import Topic
-from elephantapp.views import Connection
+from ..connection import Connection
 
 def topic_list(request):
     if request.method == 'GET':
