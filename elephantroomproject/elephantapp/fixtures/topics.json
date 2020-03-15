@@ -1,0 +1,18 @@
+[
+    {
+      "model": "elephantapp.topic",
+      "pk": 1,
+      "fields": {
+        "user_id": 1,
+        "title": "Test Title",
+        "is_anecdote": false,
+        "stance_text_body": "text here",
+        "is_citable": false,
+        "blurb": "blurb text test",
+        "resource_link": "link@test.com",
+        "image_link": "imagelinktest.com",
+        "is_free_resource": false,
+        "is_proponent": false
+      }
+    }
+  ]
