@@ -1,11 +1,14 @@
 from django.urls import path
+from django.conf.urls import include
 from .views import *
+from .auth.logout import logout_user
 
 app_name = "elephantapp"
-
 urlpatterns = [
     path('', home, name='home'),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('topics/', topic_list, name='topics'),
     path('profiles/', profile_list, name='profiles'),
     path('categories/', category_list, name='categories'),
+    path('logout/', logout_user, name='logout'),
 ]

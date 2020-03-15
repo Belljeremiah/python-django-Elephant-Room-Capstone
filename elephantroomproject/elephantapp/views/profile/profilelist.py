@@ -12,14 +12,14 @@ def profile_list(request):
             db_cursor.execute("""
             select
                 p.id,
-                p.user,
+                p.user_id,
                 p.age,
                 p.relationship_status,
                 p.political_affiliation,
                 p.evidential_preference,
                 p.debate_style_preference,
                 p.avatar_image,
-                p.theological_affiliation,
+                p.theological_affiliation
             from elephantapp_profile p
             """)
             
@@ -28,9 +28,9 @@ def profile_list(request):
             dataset = db_cursor.fetchall()
             
             for row in dataset:
-                profile = profile()
+                profile = Profile()
                 profile.id = row['id']
-                profile.user = row['user']
+                profile.user_id = row['user_id']
                 profile.relationship_status = row['relationship_status']
                 profile.political_affiliation = row['political_affiliation']
                 profile.evidential_preference = row['evidential_preference']

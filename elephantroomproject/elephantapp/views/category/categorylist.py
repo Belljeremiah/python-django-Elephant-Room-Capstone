@@ -1,6 +1,6 @@
 import sqlite3
 from django.shortcuts import render
-from elephantroomproject.elephantapp.models import Category
+from elephantapp.models import Category
 from ..connection import Connection
 
 def category_list(request):
@@ -12,12 +12,12 @@ def category_list(request):
             db_cursor.execute("""
             select
                 c.id,
-                c.user,
-                c.topic,
+                c.user_id,
+                c.topic_id,
                 c.name,
                 c.blurb,
                 c.category_icon
-            from elechantapp_category c
+            from elephantapp_category c
             """)
             
             # setting object to a container []
@@ -25,10 +25,10 @@ def category_list(request):
             dataset = db_cursor.fetchall()
             
             for row in dataset:
-                category = category()
+                category = Category()
                 category.id = row['id']
-                category.user = row['user']
-                category.topic = row['topic']
+                category.user_id = row['user_id']
+                category.topic_id = row['topic_id']
                 category.name = row['name']
                 category.blurb = row['blurb']
                 category.category_icon = row['category_icon']
