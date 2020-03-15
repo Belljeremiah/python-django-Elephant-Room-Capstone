@@ -1,6 +1,6 @@
 import sqlite3
 from django.shortcuts import render
-from elephantroomproject.elephantapp.models import Profile
+from elephantapp.models import Profile
 from ..connection import Connection
 
 def profile_list(request):

@@ -1,6 +1,6 @@
 import sqlite3
 from django.shortcuts import render
-from elephantroomproject.elephantapp.models import Topic
+from elephantapp.models import Topic
 from ..connection import Connection
 
 def topic_list(request):

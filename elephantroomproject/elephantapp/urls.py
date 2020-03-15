@@ -6,4 +6,6 @@ app_name = "elephantapp"
 urlpatterns = [
     path('', home, name='home'),
     path('topics/', topic_list, name='topics'),
+    path('profiles/', profile_list, name='profiles'),
+    path('categories/', category_list, name='categories'),
 ]
