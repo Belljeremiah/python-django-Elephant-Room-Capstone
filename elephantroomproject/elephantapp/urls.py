@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf.urls import include
 from .views import *
-from .auth.logout import logout_user
+from .views.auth.logout import logout_user
 
 app_name = "elephantapp"
 urlpatterns = [
