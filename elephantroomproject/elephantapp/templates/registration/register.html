@@ -1,0 +1,19 @@
+<h2>Register</h2>
+<form method="post">
+    {% csrf_token %}
+<!--     These values will be saved as part of a new User instance -->
+    <input type="text" placeholder="username" name="username">
+    <input type="text" placeholder="password" name="password">
+    <input type="email" placeholder="email" name="email">
+    <input type="text" placeholder="first name" name="first_name">
+    <input type="text" placeholder="last name" name="last_name">
+<!--     This value will be saved on the new Librarian instance -->
+    <input type="text" placeholder="age" name="age">
+    <input type="text" placeholder="relationship status" name="relationship_status">
+    <input type="text" placeholder="political affiliation" name="political_affiliation">
+    <input type="text" placeholder="evidential preference" name="evidential_preference">
+    <input type="text" placeholder="debate style preference" name="debate_style_preference">
+    <input type="text" placeholder="avatar image" name="avatar_image">
+    <input type="text" placeholder="theological affiliation" name="theological_affiliation">
+        <button type="submit">Login</button>
+</form>

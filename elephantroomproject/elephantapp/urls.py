@@ -2,6 +2,7 @@ from django.urls import path
 from django.conf.urls import include
 from .views import *
 from .views.auth.logout import logout_user
+from .views.register import register_user
 
 app_name = "elephantapp"
 urlpatterns = [
@@ -11,4 +12,5 @@ urlpatterns = [
     path('profiles/', profile_list, name='profiles'),
     path('categories/', category_list, name='categories'),
     path('logout/', logout_user, name='logout'),
+    path('register/', register_user, name="register"),
 ]
