@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Elephant Room</title>
+  </head>
+  <body>
+    <h1>Create Topics</h1>
+
+
+    <form action="{% url 'elephantapp:topics' %}" method="post">
+      {% csrf_token %}
+      <fieldset>
+          <label for="title">Title: </label>
+          <input id="title" type="text" name="title">
+      </fieldset>
+      <fieldset>
+          <label for="stance_text_body">Stance: </label>
+          <input id="stance_text_body" type="text" name="stance_text_body">
+      </fieldset>
+      <fieldset>
+          <label for="is_anecdote">This is A story from my Life or an Anecdote: </label>
+          <input id="is_anecdote" type="checkbox" name="is_anecdote">
+      </fieldset>
+      <fieldset>
+          <label for="is_citable">This is a Citable Source: </label>
+          <input id="is_citable" type="checkbox" name="is_citable">
+      </fieldset>
+      <fieldset>
+          <label for="cateogry">Category: </label>
+          <select id="cateogry" type="text" name="cateogry">
+                {% for category in all_categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+          </select>
+      </fieldset>
+
+      <input type="submit" value="Add It" />
+    </form>
+  </body>
+</html>

@@ -1,5 +1,7 @@
 import sqlite3
 from django.shortcuts import render
+from django.shortcuts import reverse
+from django.shortcuts import redirect
 from elephantapp.models import Topic
 from ..connection import Connection
 
@@ -49,3 +51,25 @@ def topic_list(request):
         }
 
         return render(request, template, context)
+    
+    elif request.method == 'POST':
+        form_data = request.POST
+
+        with sqlite3.connect(Connection.db_path) as conn:
+            db_cursor = conn.cursor()
+
+            db_cursor.execute("""
+            INSERT INTO elephantapp_topic
+            (
+                title, stance_text_body, is_anecdote,
+                is_citable, blurb, user_id, resource_link,
+                image_link, is_free_resource, is_proponent
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (form_data['title'], form_data['stance_text_body'],
+                form_data['is_anecdote'], form_data['is_citable'],
+                request.auth.user.id, form_data['blurb'], form_data['resource_link'],
+                form_data['image_link'], form_data['is_free_resource'], form_data['is_proponent']))
+
+        return redirect(reverse('elephantapp:topics'))
