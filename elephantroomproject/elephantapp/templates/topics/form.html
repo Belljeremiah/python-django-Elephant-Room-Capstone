@@ -28,8 +28,28 @@
           <input id="is_citable" type="checkbox" name="is_citable">
       </fieldset>
       <fieldset>
-          <label for="cateogry">Category: </label>
-          <select id="cateogry" type="text" name="cateogry">
+          <label for="blurb">A brief summary of the Topic(blurb): </label>
+          <input id="blurb" type="text" name="blurb">
+      </fieldset>
+      <fieldset>
+          <label for="resource_link">(resource_link): </label>
+          <input id="resource_link" type="url" name="resource_link">
+      </fieldset>
+      <fieldset>
+          <label for="image_link">Topic(image_link): </label>
+          <input id="image_link" type="text" name="image_link">
+      </fieldset>
+      <fieldset>
+          <label for="is_free_resource">(is_free_resource): </label>
+          <input id="is_free_resource" type="checkbox" name="is_free_resource">
+      </fieldset>
+      <fieldset>
+          <label for="is_proponent">Topic(is_proponent): </label>
+          <input id="is_proponent" type="checkbox" name="is_proponent">
+      </fieldset>
+      <fieldset>
+          <label for="category">Category: </label>
+          <select id="category" type="text" name="category">
                 {% for category in all_categories %}
                     <option value="{{ category.id }}">{{ category.name }}</option>
                 {% endfor %}
