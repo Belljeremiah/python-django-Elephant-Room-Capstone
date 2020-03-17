@@ -11,13 +11,13 @@ class Topic(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=25, default=None, null=True)
     stance_text_body = models.CharField(max_length=100, default=None, null=True)
-    is_anecdote = models.BooleanField()
-    is_citable = models.BooleanField()
+    is_anecdote = models.BooleanField(default=False, null=True)
+    is_citable = models.BooleanField(default=False, null=True)
     blurb = models.CharField(max_length=100, default=None, null=True)
     resource_link = models.CharField(max_length=100, default=None, null=True)
     image_link = models.CharField(max_length=100, default=None, null=True)
-    is_free_resource = models.BooleanField()
-    is_proponent = models.BooleanField()
+    is_free_resource = models.BooleanField(default=False, null=True)
+    is_proponent = models.BooleanField(default=False, null=True)
     # user = models.models.OneToOneField("app.Model", verbose_name=_(""), on_delete=models.CASCADE)("Employee", through='EmployeeComputer')
 
     class Meta:

@@ -1,6 +1,8 @@
 import sqlite3
 from django.shortcuts import render
 from elephantapp.models import Category
+from elephantapp.models import Topic
+from elephantapp.models import Profile
 from ..connection import Connection
 
 def category_list(request):
@@ -41,3 +43,31 @@ def category_list(request):
         }
 
         return render(request, template, context)
+
+    elif request.method == 'POST':
+            current_user = request.user
+            current_profile_user = Profile.objects.get(user_id=current_user.id)
+            topic_id = Topic.objects.get(topic_id)
+            form_data = request.POST
+
+            with sqlite3.connect(Connection.db_path) as conn:
+                db_cursor = conn.cursor()
+
+                db_cursor.execute("""
+                INSERT INTO elephantapp_topic
+                (
+                    user_id,
+                    topic_id,
+                    name, 
+                    blurb, 
+                    category_icon,
+                )
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                (current_user.id, 
+                topic_id, 
+                form_data['name'], 
+                form_data['blurb'],
+                form_data['category_icon']))
+
+            return redirect(reverse('elephantapp:categories'))
