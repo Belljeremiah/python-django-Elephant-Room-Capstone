@@ -4,6 +4,7 @@
       "pk": 1,
       "fields": {
         "user_id": 1,
+        "catgory_id": 1,
         "title": "Test Title",
         "is_anecdote": false,
         "stance_text_body": "text here",

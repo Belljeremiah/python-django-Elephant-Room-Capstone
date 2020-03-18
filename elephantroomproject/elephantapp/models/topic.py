@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from .category import Category
 
 
 class Topic(models.Model):
@@ -9,6 +10,7 @@ class Topic(models.Model):
     
     """    
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=25, default=None, null=True)
     stance_text_body = models.CharField(max_length=100, default=None, null=True)
     is_anecdote = models.BooleanField(default=False, null=True)
@@ -18,6 +20,7 @@ class Topic(models.Model):
     image_link = models.CharField(max_length=100, default=None, null=True)
     is_free_resource = models.BooleanField(default=False, null=True)
     is_proponent = models.BooleanField(default=False, null=True)
+    anecdote_body = models.CharField(max_length=3000, default=None, null=True)
     # user = models.models.OneToOneField("app.Model", verbose_name=_(""), on_delete=models.CASCADE)("Employee", through='EmployeeComputer')
 
     class Meta:

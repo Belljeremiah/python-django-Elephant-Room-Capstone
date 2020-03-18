@@ -56,8 +56,11 @@ def category_list(request):
 
     elif request.method == 'POST':
             current_user = request.user
-            current_profile_user = Category.objects.get(topic_id=current_user.id)
-            user_topic_id = Topic.objects.get(id)
+            current_profile_user = Profile.objects.get(user_id=current_user.id)
+            all_topics = Topic.objects.all(user_id=current_user.id)
+            # The wrong way to grab topic ids. above is the hopefully correct new way I am trying.
+            # current_topic = request.topic
+            # user_topic_id = Topic.objects.get(id=current_topic.id)
             form_data = request.POST
 
             # with sqlite3.connect(Connection.db_path) as conn:
@@ -82,7 +85,7 @@ def category_list(request):
             
             new_category = Category.objects.create(
                 user_id = current_user.id,
-                topic_id = user_topic_id,
+                topic_id = all_topics,
                 name = form_data['name'],
                 blurb = form_data['blurb'],
                 category_icon = form_data['category_icon']
