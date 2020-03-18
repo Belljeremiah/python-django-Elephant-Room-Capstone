@@ -10,7 +10,7 @@ class Topic(models.Model):
     
     """    
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None, null=True)
     title = models.CharField(max_length=25, default=None, null=True)
     stance_text_body = models.CharField(max_length=100, default=None, null=True)
     is_anecdote = models.BooleanField(default=False, null=True)

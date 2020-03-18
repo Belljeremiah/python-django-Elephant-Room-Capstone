@@ -65,6 +65,7 @@ def topic_list(request):
     elif request.method == 'POST':
         current_user = request.user
         current_profile_user = Profile.objects.get(user_id=current_user.id)
+        associated_category = Category.objects.all(user_id=current_user.id)
         form_data = request.POST
 
         # with sqlite3.connect(Connection.db_path) as conn:
@@ -109,7 +110,9 @@ def topic_list(request):
             resource_link = form_data['resource_link'],
             image_link = form_data['image_link'],
             is_free_resource = is_free_resource_boolean,
-            is_proponent = is_proponent_boolean
+            category_id = associated_category,
+            is_proponent = is_proponent_boolean,
+            anecdote_body = form_data['anecdote_body']
         )
         
         return redirect(reverse('elephantapp:topics'))

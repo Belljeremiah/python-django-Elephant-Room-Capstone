@@ -7,6 +7,11 @@
   </head>
   <body>
     <h1>Topic</h1>
+    <fieldset>
+      {% for category in all_categories %}
+    <option value="{{ category.id }}">{{ category.name }}</option>
+      {% endfor %}
+    </fieldset>
 
     <ol>
     {% for topic in all_topics %}
@@ -20,6 +25,7 @@
             {{topic.image_link}}
             {{topic.is_free_resource}}
             {{topic.is_proponent}}
+            {{topic.anecdote_body}}
         </li>
     {% endfor %}
     </ol>
