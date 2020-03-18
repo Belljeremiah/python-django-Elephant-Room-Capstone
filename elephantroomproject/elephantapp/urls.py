@@ -14,4 +14,5 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('register/', register_user, name="register"),
     path('topic/form', topic_form, name='topic_form'),
+    path('category/form', category_form, name='category_form')
 ]
