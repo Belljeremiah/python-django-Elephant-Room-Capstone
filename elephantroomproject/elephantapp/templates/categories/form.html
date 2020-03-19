@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Elephant Room</title>
+  </head>
+  <body>
+    <h1>Create Categories</h1>
+
+
+    <form action="{% url 'elephantapp:categories' %}" method="post">
+      {% csrf_token %}
+      <fieldset>
+          <label for="name">Name: </label>
+          <input id="name" type="text" name="name">
+      </fieldset>
+      <fieldset>
+          <label for="blurb">A brief summary of the Topic(blurb): </label>
+          <input id="blurb" type="text" name="blurb">
+      </fieldset>
+      <fieldset>
+          <label for="category_icon">(category_icon): </label>
+          <input id="category_icon" type="text" name="category_icon">
+      </fieldset>
+
+      <input type="submit" value="Add It" />
+    </form>
+  </body>
+</html>
