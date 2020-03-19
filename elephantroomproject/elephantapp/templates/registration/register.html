@@ -1,60 +1,63 @@
 {% extends 'shared/base.html' %}
 {% load static %}
 
-<h2>Register As a New User a Profile will be automatically Generated for You</h2>
-<form action="{% url 'elephantapp:register '%}" method="post">
+{% block content %}
+    <h2>Register As a New User a Profile will be automatically Generated for You</h2>
+    
+    
+    <form action="{% url 'elephantapp:register' %}" method="post">
     {% csrf_token %}
 <!--     These values will be saved as part of a new User instance -->
-    <fieldset>
-        <label for="username">Username: </label>
-        <input type="text" placeholder="username" name="username">
-    </fieldset>
-    <fieldset>
-        <label for="username">Password: </label>
-        <input type="text" placeholder="password" name="password">
-    </fieldset>
-    <fieldset>
-        <label for="username">Email: </label>
-        <input type="email" placeholder="email" name="email">
-    </fieldset>
-    <fieldset>
-        <label for="username">First Name: </label>
-        <input type="text" placeholder="first name" name="first_name">
-    </fieldset>
-    <fieldset>
-        <label for="username">Last Name: </label>
-        <input type="text" placeholder="last name" name="last_name">
-    </fieldset>
-<!--     This value will be saved on the new Librarian instance -->
-    <fieldset>
-        <label for="username">Age: </label>
-        <input type="number" placeholder="age" name="age">
-    </fieldset>
-    <fieldset>
-        <label for="username">Relationship Status: </label>
-        <input type="text" placeholder="relationship status" name="relationship_status">
-    </fieldset>
-    <fieldset>
-        <label for="username">Political Affiliation: </label>
-        <input type="text" placeholder="political affiliation" name="political_affiliation">
-    </fieldset>
-    <fieldset>
-        <label for="username">Evidential Preference: </label>
-        <input type="text" placeholder="evidential preference" name="evidential_preference">
-    </fieldset>
-    <fieldset>
-        <label for="username">Debate Style Preference: </label>
-        <input type="text" placeholder="debate style preference" name="debate_style_preference">
-    </fieldset>
-    <fieldset>
-        <label for="username">Avatar Image: </label>
-        <input type="text" placeholder="avatar image" name="avatar_image">
-    </fieldset>
-    <fieldset>
-        <label for="username">Theological Affiliation: </label>
-        <input type="text" placeholder="theological affiliation" name="theological_affiliation">
-    </fieldset>
-    <fieldset>
-        <input type="submit" value="Register" />
-</form>
+        <fieldset>
+            <label for="username">Username: </label>
+            <input type="text" placeholder="username" name="username">
+        </fieldset>
+        <fieldset>
+            <label for="username">Password: </label>
+            <input type="text" placeholder="password" name="password">
+        </fieldset>
+        <fieldset>
+            <label for="username">Email: </label>
+            <input type="email" placeholder="email" name="email">
+        </fieldset>
+        <fieldset>
+            <label for="username">First Name: </label>
+            <input type="text" placeholder="first name" name="first_name">
+        </fieldset>
+        <fieldset>
+            <label for="username">Last Name: </label>
+            <input type="text" placeholder="last name" name="last_name">
+        </fieldset>
+    <!--     This value will be saved on the new Librarian instance -->
+        <fieldset>
+            <label for="username">Age: </label>
+            <input type="number" placeholder="age" name="age">
+        </fieldset>
+        <fieldset>
+            <label for="username">Relationship Status: </label>
+            <input type="text" placeholder="relationship status" name="relationship_status">
+        </fieldset>
+        <fieldset>
+            <label for="username">Political Affiliation: </label>
+            <input type="text" placeholder="political affiliation" name="political_affiliation">
+        </fieldset>
+        <fieldset>
+            <label for="username">Evidential Preference: </label>
+            <input type="text" placeholder="evidential preference" name="evidential_preference">
+        </fieldset>
+        <fieldset>
+            <label for="username">Debate Style Preference: </label>
+            <input type="text" placeholder="debate style preference" name="debate_style_preference">
+        </fieldset>
+        <fieldset>
+            <label for="username">Avatar Image: </label>
+            <input type="text" placeholder="avatar image" name="avatar_image">
+        </fieldset>
+        <fieldset>
+            <label for="username">Theological Affiliation: </label>
+            <input type="text" placeholder="theological affiliation" name="theological_affiliation">
+        </fieldset>
+        <fieldset>
+            <input type="submit" value="Register" />
+    </form>
 {% endblock %}
