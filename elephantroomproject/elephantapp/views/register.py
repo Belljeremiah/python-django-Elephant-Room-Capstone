@@ -23,7 +23,7 @@ def register_user(request):
         )
 
         # Second, make a profile after the user has been created
-        profile = profile.objects.create(
+        profile = Profile.objects.create(
             user=new_user,
             # If you have other form data to save on the new profile, that isn't a property of the User model...
             relationship_status=request.POST['relationship_status'],

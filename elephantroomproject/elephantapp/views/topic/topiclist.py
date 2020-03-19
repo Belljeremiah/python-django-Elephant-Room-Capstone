@@ -64,10 +64,7 @@ def topic_list(request):
     
     elif request.method == 'POST':
         current_user = request.user
-        current_profile_user = Profile.objects.get(user_id=current_user.id)
-        
-        
-        # associated_category = Category.objects.filter(id=associated_category.id)
+        associated_category = Category.objects.filter(id=associated_category.id)
         form_data = request.POST
 
         # with sqlite3.connect(Connection.db_path) as conn:
