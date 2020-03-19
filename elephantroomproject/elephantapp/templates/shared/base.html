@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Elephant Room</title>
+
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
+
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+    <nav id="site-nav">
+        <ol class="navList">
+            <li class="navList__route"><a href="{% url 'elephantapp:home' %}">Home</a></li>
+            <li class="navList__route"><a href="{% url 'elephantapp:topics' %}">Topics</a></li>
+            <li class="navList__route"><a href="{% url 'elephantapp:profiles' %}">Profiles</a></li>
+            <li class="navList__route"><a href="{% url 'elephantapp:categories' %}">Categories</a></li>
+            <li class="navList__route"><a href="{% url 'elephantapp:topic_form' %}">Topic Form</a></li>
+            <li class="navList__route"><a href="{% url 'elephantapp:category_form' %}">Category Form</a></li>
+
+            {% if user.is_authenticated %}
+                <li class="navList__route"><a href="{% url 'elephantapp:logout' %}">Logout</a></li>  
+            {% else %}
+                <li class="navList__route"><a href="{% url 'elephantapp:register' %}">Register</a></li>   
+            {% endif %}
+
+        </ol>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    {% block scripts %}
+    {% endblock scripts %}
+
+</body>
+
+</html>

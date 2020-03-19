@@ -1,66 +1,60 @@
+{% extends 'shared/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Elephant Room</title>
-  </head>
-  <body>
-    <h1>Create Topics</h1>
 
+{% block content %}
+    <h1>Create Topics</h1>
 
     <form action="{% url 'elephantapp:topics' %}" method="post">
       {% csrf_token %}
-      <fieldset>
-          <label for="title">Title: </label>
-          <input id="title" type="text" name="title">
-      </fieldset>
-      <fieldset>
-          <label for="stance_text_body">Stance: </label>
-          <input id="stance_text_body" type="text" name="stance_text_body">
-      </fieldset>
-      <fieldset>
-          <label for="is_anecdote">This is A story from my Life or an Anecdote: </label>
-          <input id="is_anecdote" type="checkbox" name="is_anecdote" value=True>
-      </fieldset>
-      <fieldset>
-          <label for="is_citable">This is a Citable Source: </label>
-          <input id="is_citable" type="checkbox" name="is_citable" value=True>
-      </fieldset>
-      <fieldset>
-          <label for="blurb">A brief summary of the Topic(blurb): </label>
-          <input id="blurb" type="text" name="blurb">
-      </fieldset>
-      <fieldset>
-          <label for="resource_link">(resource_link): </label>
-          <input id="resource_link" type="url" name="resource_link">
-      </fieldset>
-      <fieldset>
-          <label for="image_link">Topic(image_link): </label>
-          <input id="image_link" type="text" name="image_link">
-      </fieldset>
-      <fieldset>
-          <label for="is_free_resource">(is_free_resource): </label>
-          <input id="is_free_resource" type="checkbox" name="is_free_resource" value=True>
-      </fieldset>
-      <fieldset>  
-          <label for="is_proponent">Topic(is_proponent): </label>
-          <input id="is_proponent" type="checkbox" name="is_proponent" value=True>
-      </fieldset>
-      <fieldset>  
-          <label for="anecdote_body">Topic(anecdote_body): </label>
-          <input id="anecdote_body" type="text" name="anecdote_body">
-      </fieldset>
-      <fieldset>
-          <label for="category">Category: </label>
-          <select id="category" type="text" name="category">
-                {% for category in all_categories %}
-                    <option value="{{ category.id }}">{{ category.name }}</option>
-                {% endfor %}
-          </select>
-      </fieldset>
+        <fieldset>
+            <label for="title">Title: </label>
+            <input id="title" type="text" name="title">
+        </fieldset>
+        <fieldset>
+            <label for="stance_text_body">Stance: </label>
+            <input id="stance_text_body" type="text" name="stance_text_body">
+        </fieldset>
+        <fieldset>
+            <label for="is_anecdote">This is A story from my Life or an Anecdote: </label>
+            <input id="is_anecdote" type="checkbox" name="is_anecdote" value=True>
+        </fieldset>
+        <fieldset>
+            <label for="is_citable">This is a Citable Source: </label>
+            <input id="is_citable" type="checkbox" name="is_citable" value=True>
+        </fieldset>
+        <fieldset>
+            <label for="blurb">A brief summary of the Topic(blurb): </label>
+            <input id="blurb" type="text" name="blurb">
+        </fieldset>
+        <fieldset>
+            <label for="resource_link">(resource_link): </label>
+            <input id="resource_link" type="url" name="resource_link">
+        </fieldset>
+        <fieldset>
+            <label for="image_link">Topic(image_link): </label>
+            <input id="image_link" type="text" name="image_link">
+        </fieldset>
+        <fieldset>
+            <label for="is_free_resource">(is_free_resource): </label>
+            <input id="is_free_resource" type="checkbox" name="is_free_resource" value=True>
+        </fieldset>
+        <fieldset>  
+            <label for="is_proponent">Topic(is_proponent): </label>
+            <input id="is_proponent" type="checkbox" name="is_proponent" value=True>
+        </fieldset>
+        <fieldset>  
+            <label for="anecdote_body">Topic(anecdote_body): </label>
+            <input id="anecdote_body" type="text" name="anecdote_body">
+        </fieldset>
+        <fieldset>
+            <label for="category">Category: </label>
+            <select id="category" type="text" name="category">
+                    {% for category in all_categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+            </select>
+        </fieldset>
 
-      <input type="submit" value="Add It" />
+        <input type="submit" value="Add It" />
     </form>
-  </body>
-</html>
+    {% endblock %}
