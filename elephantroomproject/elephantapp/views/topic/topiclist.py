@@ -1,4 +1,5 @@
 import sqlite3
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import reverse
 from django.shortcuts import redirect
@@ -7,6 +8,7 @@ from elephantapp.models import Profile
 from elephantapp.models import Category
 from ..connection import Connection
 
+@login_required
 def topic_list(request):
     if request.method == 'GET':
         current_user = request.user

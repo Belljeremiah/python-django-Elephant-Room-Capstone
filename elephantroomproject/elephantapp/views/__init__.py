@@ -5,3 +5,6 @@ from .profile.profilelist import profile_list
 from .category.categorylist import category_list
 from .topic.form import topic_form
 from .category.form import category_form
+from .topic.details import topic_details
+from .category.details import category_details
+from .connection import Connection

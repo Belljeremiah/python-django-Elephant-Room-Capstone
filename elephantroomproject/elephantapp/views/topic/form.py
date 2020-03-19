@@ -5,7 +5,7 @@ from elephantapp.models import Topic
 from elephantapp.models import Category
 from ..connection import Connection
 
-
+@login_required
 def get_topics():
     with sqlite3.connect(Connection.db_path) as conn:
         conn.row_factory = sqlite3.Row
@@ -31,7 +31,8 @@ def get_topics():
         """)
 
         return db_cursor.fetchall()
-    
+
+@login_required    
 def get_categories():
     with sqlite3.connect(Connection.db_path) as conn:
         conn.row_factory = sqlite3.Row
