@@ -19,6 +19,7 @@
     <ol>
     {% for topic in all_topics %}
         <li>
+          <a href="{% url 'elephantapp:topic' topic.id %}">
             {{topic.title}}
             {{topic.stance_text_body}}
             {{topic.is_anecdote}}
@@ -28,7 +29,8 @@
             {{topic.image_link}}
             {{topic.is_free_resource}}
             {{topic.is_proponent}}
-            {{topic.anecdote_body}}
+            {{topic.anecdote_body}} 
+          </a>
         </li>
     {% endfor %}
     </ol>

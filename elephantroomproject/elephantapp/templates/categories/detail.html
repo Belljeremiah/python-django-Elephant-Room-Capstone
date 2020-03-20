@@ -1,0 +1,19 @@
+{% extends 'shared/base.html' %}
+{% load static  %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <h1 class='title'>{{category.name}}</h1>
+    <body>
+      <h1>{{category.user}}</h1>
+      <h1>{{category.name}}</h1>
+      <h1>{{category.blurb}}</h1>
+      <h1>{{category.category_icon}}</h1>
+        <form action="{% url 'elephantapp:category' category.id %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="actual_method" value="DELETE">
+          <button>Delete</button>
+        </form>
+    </body>
+</html>
+{% endblock %}
