@@ -1,0 +1,20 @@
+{% extends 'shared/base.html' %}
+{% load static  %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1 class='title'>{{topic.title}}</h1>
+    <h1 class='title'>{{topic.stance_text_body}}</h1>
+    <h1 class='title'>{{topic.is_anecdote}}</h1>
+    <h1 class='title'>{{topic.is_citable}}</h1>
+    <h1 class='title'>{{topic.blurb}}</h1>
+    <h1 class='title'>{{topic.resource_link}}</h1>
+    <h1 class='title'>{{topic.image_link}}</h1>
+    <h1 class='title'>{{topic.is_free_resource}}</h1>
+    <h1 class='title'>{{topic.is_proponent}}</h1>
+    <h1 class='title'>{{topic.anecdote_body}}</h1>
+    <h1 class='title'>{{topic.category_id}}</h1>
+  </body>
+</html>
+{% endblock %}

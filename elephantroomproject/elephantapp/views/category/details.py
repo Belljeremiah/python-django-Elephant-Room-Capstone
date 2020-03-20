@@ -5,13 +5,15 @@ from elephantapp.models import Topic, Category
 from ..connection import Connection
 
 @login_required
-def category_details(category_id):
-    category = Category.objects.get(id=category_id)
-    print(category.title)
+def category_details(request, category_id):
     
-    template = 'category/detail.html'
-    context = {
-        'category': category
-    }
-    
-    return render(request, template, context)
+    if request.method == 'GET':
+        category = Category.objects.get(id=category_id)
+        print(category.title)
+        
+        template = 'categories/detail.html'
+        context = {
+            'category': category
+        }
+        
+        return render(request, template, context)

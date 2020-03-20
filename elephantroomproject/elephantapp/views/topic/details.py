@@ -4,13 +4,16 @@ from django.contrib.auth.decorators import login_required
 from elephantapp.models import Topic, Category
 from ..connection import Connection
 
-def topic_details(topic_id):
-    topic = Topic.objects.get(id=topic_id)
-    print(topic.title)
+@login_required
+def topic_details(request, topic_id):
     
-    template = 'topic/detail.html'
-    context = {
-        'topic': topic
-    }
-    
-    return render(request, template, context)
+    if request.method == 'GET':
+        topic = Topic.objects.get(id=topic_id)
+        print(topic.id)
+        
+        template = 'topics/detail.html'
+        context = {
+            'topic': topic
+        }
+        
+        return render(request, template, context)

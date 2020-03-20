@@ -13,13 +13,15 @@
     <ol>
     {% for category in all_categories %}
         <li>
+          <a href="{% url 'elephantapp:category' category.id %}">
             {{category.user}}
             {{category.name}}
             {{category.blurb}}
             {{category.category_icon}}
+          </a>
         </li>
     {% endfor %}
     </ol>
   </body>
 </html>
-{% endblock content %}
+{% endblock %}
