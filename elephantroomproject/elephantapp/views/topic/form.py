@@ -26,9 +26,11 @@ def topic_edit_form(request, topic_id):
         current_user = request.user
         current_profile_user = Profile.objects.get(user__id=current_user.id)
         topic = Topic.objects.get(pk=topic_id)
+        all_categories = Category.objects.all()
         template = 'topics/form.html'
         context = {
             'topic': topic,
+            'all_categories': all_categories
         }
 
         return render(request, template, context)

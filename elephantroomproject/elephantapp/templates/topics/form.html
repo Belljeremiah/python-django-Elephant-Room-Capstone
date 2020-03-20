@@ -11,12 +11,12 @@
     {% endif %}
       {% csrf_token %}
         <fieldset>
-            <label for="title">Title: </label>
+            <label for="title">Title: {{ topic.title }} </label>
             <input id="title" type="text" name="title">
         </fieldset>
         <fieldset>
-            <label for="stance_text_body">Stance: </label>
-            <input id="stance_text_body" type="text" name="stance_text_body" value=True>
+            <label for="stance_text_body">Stance: {{ topic.stance_text_body }} </label>
+            <input id="stance_text_body" type="text" name="stance_text_body">
         </fieldset>
         <fieldset>
             <label for="is_anecdote">This is A story from my Life or an Anecdote: </label>
@@ -27,28 +27,40 @@
             {% endif %}
         </fieldset>
         <fieldset>
-            <label for="is_citable">This is a Citable Source: </label>
-            <input id="is_citable" type="checkbox" name="is_citable" value=True>
+            <label for="is_citable">This is a Citable Source: {{ topic.is_citable }} </label>
+            {% if topic.is_citable is not None %}
+            <input id="is_citable" type="checkbox" name="is_citable" checked={{ topic.is_citable }}>
+            {% else %}
+            <input id="is_citable" type="checkbox" name="is_citable" checked=True>
+            {% endif %}
         </fieldset>
         <fieldset>
-            <label for="blurb">A brief summary of the Topic(blurb): </label>
+            <label for="blurb">A brief summary of the Topic(blurb): {{ topic.blurb }} </label>
             <input id="blurb" type="text" name="blurb">
         </fieldset>
         <fieldset>
-            <label for="resource_link">(resource_link): </label>
+            <label for="resource_link">(resource_link): {{ topic.resource_link }} </label>
             <input id="resource_link" type="url" name="resource_link">
         </fieldset>
         <fieldset>
-            <label for="image_link">Topic(image_link): </label>
+            <label for="image_link">Topic(image_link): {{ topic.image_link }} </label>
             <input id="image_link" type="text" name="image_link">
         </fieldset>
         <fieldset>
-            <label for="is_free_resource">(is_free_resource): </label>
-            <input id="is_free_resource" type="checkbox" name="is_free_resource" value=True>
+            <label for="is_free_resource">(is_free_resource): {{ topic.is_free_resource }} </label>
+            {% if topic.is_free_resource is not None %}
+            <input id="is_freetopic.is_free_resource" type="checkbox" name="is_freetopic.is_free_resource" checked={{ topic.is_free_resource }}>
+            {% else %}
+            <input id="is_freetopic.is_free_resource" type="checkbox" name="is_freetopic.is_free_resource" checked=True>
+            {% endif %}
         </fieldset>
         <fieldset>  
-            <label for="is_proponent">Topic(is_proponent): </label>
-            <input id="is_proponent" type="checkbox" name="is_proponent" value=True>
+            <label for="is_proponent">Topic(is_proponent): {{ topic.is_proponent}} </label>
+            {% if topic.is_proponent is not None %}
+            <input id="is_proponent" type="checkbox" name="is_proponent" checked={{ topic.is_proponent }}>
+            {% else %}
+            <input id="is_proponent" type="checkbox" name="is_proponent" checked=True>
+            {% endif %}
         </fieldset>
         <fieldset>  
             <label for="anecdote_body">Topic(anecdote_body): {{ topic.anecdote_body }} </label>
@@ -58,7 +70,7 @@
             <label for="category">Category: </label>
             <select id="category" type="text" name="category">
                     {% for category in all_categories %}
-                        <option {% if category.id == topic.category_id %}selected{% endif %} value="{{ category.id }}">
+                        <option {% if category.id == topic.category_id %}selected{% endif %} value="{{ category.name }}">
                         {{ category.name }}</option>
                     {% endfor %}
             </select>
