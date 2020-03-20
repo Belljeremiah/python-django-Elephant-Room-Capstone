@@ -28,7 +28,6 @@ def topic_list(request):
     
     elif request.method == 'POST':
         current_user = request.user
-        associated_category = Category.objects.filter(id=associated_category.id)
         form_data = request.POST
 
         # with sqlite3.connect(Connection.db_path) as conn:

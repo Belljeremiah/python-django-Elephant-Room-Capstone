@@ -4,22 +4,32 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <h1 class='title'>{{topic.title}}</h1>
-    <h1 class='title'>{{topic.stance_text_body}}</h1>
-    <h1 class='title'>{{topic.is_anecdote}}</h1>
-    <h1 class='title'>{{topic.is_citable}}</h1>
-    <h1 class='title'>{{topic.blurb}}</h1>
-    <h1 class='title'>{{topic.resource_link}}</h1>
-    <h1 class='title'>{{topic.image_link}}</h1>
-    <h1 class='title'>{{topic.is_free_resource}}</h1>
-    <h1 class='title'>{{topic.is_proponent}}</h1>
-    <h1 class='title'>{{topic.anecdote_body}}</h1>
-    <h1 class='title'>{{topic.category_id}}</h1>
-    <form action="{% url 'elephantapp:topic' topic.id %}" method="POST">
+    
+    <section id="topic-details">
+      <h1 class='title'>Title{{topic.title}}</h1>
+      <h1 class='title'>Stance Text Body{{topic.stance_text_body}}</h1>
+      <h1 class='title'>Is Anecdote{{topic.is_anecdote}}</h1>
+      <h1 class='title'>Is Citable{{topic.is_citable}}</h1>
+      <h1 class='title'>Blurb{{topic.blurb}}</h1>
+      <h1 class='title'>Resource Link{{topic.resource_link}}</h1>
+      <h1 class='title'>Image Link{{topic.image_link}}</h1>
+      <h1 class='title'>Is Free {{topic.is_free_resource}}</h1>
+      <h1 class='title'>Is Proponent{{topic.is_proponent}}</h1>
+      <h1 class='title'>Anecdote Body{{topic.anecdote_body}}</h1>
+      <h1 class='title'>Category Id{{topic.category_id}}</h1>
+    </section>
+
+    <section id="topic-actions">
+  <form action="{% url 'elephantapp:topic' topic.id %}" method="POST">
     {% csrf_token %}
     <input type="hidden" name="actual_method" value="DELETE">
     <button>Delete</button>
-</form>
+  </form>
+
+  <form action="{% url 'elephantapp:topic_edit_form' topic.id %}" method="GET">
+    {% csrf_token %}
+    <button>Edit</button>
+  </form>
   </body>
 </html>
 {% endblock %}

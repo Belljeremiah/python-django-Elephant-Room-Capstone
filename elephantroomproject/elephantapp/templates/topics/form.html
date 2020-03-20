@@ -2,9 +2,13 @@
 {% load static %}
 
 {% block content %}
-    <h1>Create Topics</h1>
+    <h1>Create a Topic</h1>
 
+    {% if topic.id is not None %}
+    <form action="{% url 'elephantapp:topic' topic.id %}" method="post">
+    {% else %}
     <form action="{% url 'elephantapp:topics' %}" method="post">
+    {% endif %}
       {% csrf_token %}
         <fieldset>
             <label for="title">Title: </label>
@@ -12,11 +16,15 @@
         </fieldset>
         <fieldset>
             <label for="stance_text_body">Stance: </label>
-            <input id="stance_text_body" type="text" name="stance_text_body">
+            <input id="stance_text_body" type="text" name="stance_text_body" value=True>
         </fieldset>
         <fieldset>
             <label for="is_anecdote">This is A story from my Life or an Anecdote: </label>
-            <input id="is_anecdote" type="checkbox" name="is_anecdote" value=True>
+            {% if topic.is_anecdote is not None %}
+            <input id="is_anecdote" type="checkbox" name="is_anecdote" checked={{ topic.is_anecdote }}>
+            {% else %}
+            <input id="is_anecdote" type="checkbox" name="is_anecdote" checked=True>
+            {% endif %}
         </fieldset>
         <fieldset>
             <label for="is_citable">This is a Citable Source: </label>
@@ -43,18 +51,24 @@
             <input id="is_proponent" type="checkbox" name="is_proponent" value=True>
         </fieldset>
         <fieldset>  
-            <label for="anecdote_body">Topic(anecdote_body): </label>
+            <label for="anecdote_body">Topic(anecdote_body): {{ topic.anecdote_body }} </label>
             <input id="anecdote_body" type="text" name="anecdote_body">
         </fieldset>
         <fieldset>
             <label for="category">Category: </label>
             <select id="category" type="text" name="category">
                     {% for category in all_categories %}
-                        <option value="{{ category.id }}">{{ category.name }}</option>
+                        <option {% if category.id == topic.category_id %}selected{% endif %} value="{{ category.id }}">
+                        {{ category.name }}</option>
                     {% endfor %}
             </select>
         </fieldset>
 
-        <input type="submit" value="Add It" />
+        {% if topic.id is not None %}
+            <input type="hidden" name="actual_method" value="PUT">
+            <input type="submit" value="Update" />
+        {% else %}
+            <input type="submit" value="Add It" />
+        {% endif %}
     </form>
     {% endblock %}

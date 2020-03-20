@@ -19,3 +19,16 @@ def topic_form(request):
         }
 
         return render(request, template, context)
+
+@login_required
+def topic_edit_form(request, topic_id):
+    if request.method == 'GET':
+        current_user = request.user
+        current_profile_user = Profile.objects.get(user__id=current_user.id)
+        topic = Topic.objects.get(pk=topic_id)
+        template = 'topics/form.html'
+        context = {
+            'topic': topic,
+        }
+
+        return render(request, template, context)
