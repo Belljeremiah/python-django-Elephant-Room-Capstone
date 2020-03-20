@@ -15,6 +15,11 @@
     <h1 class='title'>{{topic.is_proponent}}</h1>
     <h1 class='title'>{{topic.anecdote_body}}</h1>
     <h1 class='title'>{{topic.category_id}}</h1>
+    <form action="{% url 'elephantapp:topic' topic.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="actual_method" value="DELETE">
+    <button>Delete</button>
+</form>
   </body>
 </html>
 {% endblock %}

@@ -17,3 +17,15 @@ def topic_details(request, topic_id):
         }
         
         return render(request, template, context)
+    
+    elif request.method == 'POST':
+        form_data = request.POST
+        
+        if (
+            "actual_method" in form_data
+            and form_data["actual_method"] == 'DELETE'
+        ):
+            topic = Topic.objects.get(id=topic_id)
+            topic.delete()
+            
+            return redirect(reverse('elephantapp:topics'))

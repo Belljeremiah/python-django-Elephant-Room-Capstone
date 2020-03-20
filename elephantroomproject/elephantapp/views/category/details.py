@@ -9,7 +9,7 @@ def category_details(request, category_id):
     
     if request.method == 'GET':
         category = Category.objects.get(id=category_id)
-        print(category.title)
+        print(category.name)
         
         template = 'categories/detail.html'
         context = {
@@ -17,3 +17,15 @@ def category_details(request, category_id):
         }
         
         return render(request, template, context)
+    
+    elif request.method == 'POST':
+        form_data = request.POST
+        
+        if (
+            "actual_method" in form_data
+            and form_data["actual_method"] == 'DELETE'
+        ):
+            category = Category.objects.get(id=category_id)
+            category.delete()
+            
+            return redirect(reverse('elephantapp:categories'))
