@@ -7,5 +7,6 @@ from .topic.form import topic_edit_form
 from .category.categorylist import category_list
 from .category.form import category_form
 from .category.details import category_details
+from .category.form import category_edit_form
 from .profile.profilelist import profile_list
 from .connection import Connection
