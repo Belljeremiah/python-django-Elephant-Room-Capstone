@@ -11,7 +11,7 @@ from ..connection import Connection
 def topic_list(request):
     if request.method == 'GET':
         current_user = request.user
-        current_profile_user = Profile.objects.get(user_id=current_user.id)
+        current_profile_user = Profile.objects.filter(user_id=current_user.id)
         all_topics = Topic.objects.all()
         
         title = request.GET.get('title', None)
@@ -29,52 +29,27 @@ def topic_list(request):
     elif request.method == 'POST':
         current_user = request.user
         form_data = request.POST
-
-        # with sqlite3.connect(Connection.db_path) as conn:
-        #     db_cursor = conn.cursor()
-
-        #     db_cursor.execute("""
-        #     INSERT INTO elephantapp_topic
-        #     (
-        #         title, stance_text_body, is_anecdote,
-        #         is_citable, user_id, blurb, resource_link,
-        #         image_link, is_free_resource, is_proponent
-        #     )
-        #     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        #     """,
-        #     (form_data['title'], form_data['stance_text_body'], form_data['is_anecdote'], 
-        #         form_data['is_citable'], current_user.id, form_data['blurb'], form_data['resource_link'],
-        #         form_data['image_link'], form_data['is_free_resource'], form_data['is_proponent']))
-        is_proponent_boolean = False
-        is_proponent = 'is_proponent' in request.POST
-        if is_proponent == True : is_proponent_boolean = True
         
-        is_anecdote_boolean = False
-        is_anecdote = 'is_anecdote' in request.POST
-        if is_anecdote == True : is_anecdote_boolean = True
-        
-        is_citable_boolean = False
-        is_citable = 'is_citable' in request.POST
-        if is_citable == True : is_citable_boolean = True
-        
-        is_free_resource_boolean = False
-        is_free_resource = 'is_free_resource' in request.POST
-        if is_free_resource == True : is_free_resource_boolean = True
-        
+        proponent_boolean = form_data.get("is_proponent", False)
+        anecdote_boolean = form_data.get("is_anecdote", False)
+        citable_boolean = form_data.get("is_citable", False)
+        free_resource_boolean = form_data.get("is_free_resource", False)
         
         new_topic = Topic.objects.create(
             title = form_data['title'],
             stance_text_body = form_data['stance_text_body'],
-            is_anecdote = is_anecdote_boolean, 
-            is_citable = is_citable_boolean, 
+            is_anecdote = anecdote_boolean, 
+            is_citable = citable_boolean, 
             user_id = current_user.id, 
             blurb = form_data['blurb'], 
             resource_link = form_data['resource_link'],
             image_link = form_data['image_link'],
-            is_free_resource = is_free_resource_boolean,
+            is_free_resource = free_resource_boolean,
             category_id = form_data['category'],
-            is_proponent = is_proponent_boolean,
+            is_proponent = proponent_boolean,
             anecdote_body = form_data['anecdote_body']
         )
         
         return redirect(reverse('elephantapp:topics'))
+        
+        
