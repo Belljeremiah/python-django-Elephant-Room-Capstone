@@ -18,5 +18,7 @@ urlpatterns = [
     path('topics/<int:topic_id>/', topic_details, name='topic'),
     path('categories/<int:category_id>/', category_details, name='category'),
     path('topics/<int:topic_id>/form/', topic_edit_form, name='topic_edit_form'),
-    path('categories/<int:category_id>/form/', category_edit_form, name='category_edit_form')
+    path('categories/<int:category_id>/form/', category_edit_form, name='category_edit_form'),
+    path('profiles/<int:profile_id>/', profile_details, name='profile'),
+    path('profiles/<int:profile_id>/form/', profile_edit_form, name='profile_edit_form')
 ]

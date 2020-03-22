@@ -9,4 +9,6 @@ from .category.form import category_form
 from .category.details import category_details
 from .category.form import category_edit_form
 from .profile.profilelist import profile_list
+from .profile.details import profile_details
+from .profile.form import profile_edit_form
 from .connection import Connection

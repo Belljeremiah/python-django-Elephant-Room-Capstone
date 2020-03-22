@@ -1,0 +1,48 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+  <body>
+    <h1>Edit Your Profile</h1>
+  
+    {% if profile.id is not None %}
+    <form action="{% url 'elephantapp:profile' profile.id %}" method="post">
+    {% else %}
+    <form action="{% url 'elephantapp:profiles' %}" method="post">
+    {% endif %}
+      {% csrf_token %}
+        <fieldset>
+            <label for="age">Age: {{ profile.age }} </label>
+            <input id="age" type="number" age="age" value="{{ profile.age }}">
+        </fieldset>
+        <fieldset>
+            <label for="political_affiliation">Political Affiliation: {{ profile.political_affiliation }}</label>
+            <input id="political_affiliation" type="text" name="political_affiliation" value="{{ profile.political_affiliation }}">
+        </fieldset>
+        <fieldset>
+            <label for="evidential_preference">Evidential Preference: {{ profile.evidential_preference }}</label>
+            <input id="evidential_preference" type="text" name="evidential_preference" value="{{ profile.evidential_preference }}">
+        </fieldset>
+        <fieldset>
+            <label for="debate_style_preference">Debate Style Preference: {{ profile.debate_style_preference }}</label>
+            <input id="debate_style_preference" type="text" name="debate_style_preference" value="{{ profile.debate_style_preference }}">
+        </fieldset>
+        <fieldset>
+            <label for="profile.avatar_image">Avatar Image: {{ profile.avatar_image }}</label>
+            <input id="profile.avatar_image" type="text" name="profile.avatar_image" value="{{ profile.avatar_image }}">
+        </fieldset>
+        <fieldset>
+            <label for="theological_affiliation">Theological Affiliation: {{ profile.theological_affiliation }}</label>
+            <input id="theological_affiliation" type="text" name="theological_affiliation" value="{{ profile.theological_affiliation }}">
+        </fieldset>
+        
+        {% if profile.id is not None %}
+            <input type="hidden" name="actual_method" value="PUT">
+            <input type="submit" value="Update" />
+        {% else %}
+            <input type="submit" value="Add It" />
+        {% endif %}
+      </form>
+    </body>
+  </html>
+  {% endblock %}

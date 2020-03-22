@@ -7,42 +7,42 @@ from ..connection import Connection
 
 # DO not know why I was doing this here, but everything seem sto function without it currrently. Don't want to delete it just yet.
 # @login_required
-# def get_categories(request):
+# def get_profiles(request):
 #     if request.method == 'GET':
 #         current_user = request.user
 #         current_profile_user = Profile.objects.get(user_id=current_user.id)
 #         all_topics = Topic.objects.all()
-#         all_categories = Category.objects.all()
-#         template = 'categories/form.html'
+#         all_profiles = Category.objects.all()
+#         template = 'profiles/form.html'
 #         context = {
 #             'all_topics': all_topics,
-#             'all_categories': all_categories
+#             'all_profiles': all_profiles
 #         }
 
 #         return render(request, template, context)
     
 @login_required
-def category_form(request):
+def profile_form(request):
     if request.method == 'GET':
         current_user = request.user
         current_profile_user = Profile.objects.get(user_id=current_user.id)
-        category = Category.objects.all()
-        template = 'categories/form.html'
+        profile = Profile.objects.all()
+        template = 'profiles/form.html'
         context = {
-            'category': category,
+            'profile': profile,
         }
 
         return render(request, template, context)
     
 @login_required
-def category_edit_form(request, category_id):
+def profile_edit_form(request, profile_id):
     if request.method == 'GET':
         current_user = request.user
         current_profile_user = Profile.objects.get(user__id=current_user.id)
-        category = Category.objects.get(pk=category_id)
-        template = 'categories/form.html'
+        profile = Profile.objects.get(pk=profile_id)
+        template = 'profiles/form.html'
         context = {
-            'category': category,
+            'profile': profile,
         }
 
         return render(request, template, context)
