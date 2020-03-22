@@ -13,7 +13,11 @@
       {% csrf_token %}
         <fieldset>
             <label for="age">Age: {{ profile.age }} </label>
-            <input id="age" type="number" age="age" value="{{ profile.age }}">
+            <input id="age" type="number" name="age" value="{{ profile.age }}">
+        </fieldset>
+        <fieldset>
+            <label for="relationship_status">Relationship Status: {{ profile.relationship_status }}</label>
+            <input id="relationship_status" type="text" name="relationship_status" value="{{ profile.relationship_status }}">
         </fieldset>
         <fieldset>
             <label for="political_affiliation">Political Affiliation: {{ profile.political_affiliation }}</label>
@@ -28,8 +32,8 @@
             <input id="debate_style_preference" type="text" name="debate_style_preference" value="{{ profile.debate_style_preference }}">
         </fieldset>
         <fieldset>
-            <label for="profile.avatar_image">Avatar Image: {{ profile.avatar_image }}</label>
-            <input id="profile.avatar_image" type="text" name="profile.avatar_image" value="{{ profile.avatar_image }}">
+            <label for="avatar_image">Avatar Image: {{ profile.avatar_image }}</label>
+            <input id="avatar_image" type="text" name="avatar_image" value="{{ profile.avatar_image }}">
         </fieldset>
         <fieldset>
             <label for="theological_affiliation">Theological Affiliation: {{ profile.theological_affiliation }}</label>
