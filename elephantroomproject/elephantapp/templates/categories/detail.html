@@ -5,15 +5,22 @@
 <html>
     <h1 class='title'>{{category.name}}</h1>
     <body>
-      <h1>{{category.user}}</h1>
-      <h1>{{category.name}}</h1>
-      <h1>{{category.blurb}}</h1>
-      <h1>{{category.category_icon}}</h1>
-        <form action="{% url 'elephantapp:category' category.id %}" method="POST">
-          {% csrf_token %}
-          <input type="hidden" name="actual_method" value="DELETE">
-          <button>Delete</button>
-        </form>
+      <h1>User Name: {{category.user}}</h1>
+      <h1>Category Description(blurb): {{category.blurb}}</h1>
+      <h1>Category Icon Placeholder: {{category.category_icon}}</h1>
+        
+      <section id="category-actions">
+      <form action="{% url 'elephantapp:category' category.id %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="actual_method" value="DELETE">
+        <button>Delete</button>
+      </form>
+        
+      <form action="{% url 'elephantapp:category_edit_form' category.id %}" method="GET">
+        {% csrf_token %}
+        <button>Edit</button>
+      </form>
+      </section>
     </body>
 </html>
 {% endblock %}

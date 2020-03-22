@@ -10,20 +10,21 @@
   <body>
     <h1>Profile</h1>
 
-    <ol>
+    <ul>
     {% for profile in all_profiles %}
         <li>
-            {{profile.user}}
-            {{profile.age}}
-            {{profile.relationship_status}}
-            {{profile.political_affiliation}}
-            {{profile.evidential_preference}}
-            {{profile.debate_style_preference}}
-            {{profile.avatar_image}}
-            {{profile.theological_affiliation}}
+            <a href="{% url 'elephantapp:profile' profile.id %}">  
+            Age: {{profile.age}}
+            Relationship Status: {{profile.relationship_status}}
+            Political Affiliation: {{profile.political_affiliation}}
+            Evidential Preference: {{profile.evidential_preference}}
+            Debate Style Preference: {{profile.debate_style_preference}}
+            Avatar Image: {{profile.avatar_image}}
+            Theological Affiliation: {{profile.theological_affiliation}}
+            </a>
         </li>
     {% endfor %}
-    </ol>
+    </ul>
   </body>
 </html>
 {% endblock content %}
