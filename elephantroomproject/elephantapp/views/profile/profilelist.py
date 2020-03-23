@@ -8,8 +8,7 @@ from ..connection import Connection
 def profile_list(request):
     if request.method == 'GET':
         current_user = request.user
-        current_profile_user = Profile.objects.filter(user_id=current_user.id)
-        all_profiles = Profile.objects.all()
+        all_profiles = Profile.objects.filter(user=current_user)
         
         profile_id = request.GET.get('profile_id', None)
         print(profile_id)        

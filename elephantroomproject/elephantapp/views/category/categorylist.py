@@ -11,8 +11,8 @@ from ..connection import Connection
 def category_list(request):
     if request.method == 'GET':
         current_user = request.user
-        current_profile_user = Profile.objects.filter(user_id=current_user.id)
-        all_categories = Category.objects.all()
+        current_profile_user = Profile.objects.filter(user=current_user)
+        all_categories = Category.objects.filter(user=current_user)
         
         name = request.GET.get('name', None)
         

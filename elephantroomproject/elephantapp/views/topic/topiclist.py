@@ -11,8 +11,8 @@ from ..connection import Connection
 def topic_list(request):
     if request.method == 'GET':
         current_user = request.user
-        current_profile_user = Profile.objects.filter(user_id=current_user.id)
-        all_topics = Topic.objects.all()
+        current_profile_user = Profile.objects.filter(user=current_user)
+        all_topics = Topic.objects.filter(user=current_user)
         
         title = request.GET.get('title', None)
                 
