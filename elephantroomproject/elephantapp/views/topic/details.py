@@ -1,8 +1,24 @@
+import sqlite3
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from elephantapp.models import Topic, Category, Profile
 from ..connection import Connection
+
+# def create_topic():
+    
+#     topic = Topic.objects.all()
+#     category = Category.objects.all()
+#     profile = Profile.objects.all()
+    
+#     topic.profile = profile
+#     topic.category = category
+    
+#     return topic
+
+# # Getting a Single Topic
+# def get_topic(topic_id):
+    
 
 @login_required
 def topic_details(request, topic_id):
@@ -56,3 +72,5 @@ def topic_details(request, topic_id):
             topic_to_update.save()
             
             return redirect(reverse('elephantapp:topics'))
+        
+# First Go at Getting data from other objects to display as I want it with the extra values wanted.
