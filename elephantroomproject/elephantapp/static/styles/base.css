@@ -39,7 +39,7 @@ body {
       margin: 2px;
   }
   
-  /* a {text-decoration: none; color: white;} */
+  /* a {text-decoration: none; color: orange;} */
   a:link { text-decoration: none; color:rgb(250, 124, 6); }
   a:visited { text-decoration: none; color:rgb(250, 124, 6); }
   a:hover { text-decoration: none; color:rgb(250, 124, 6); }
