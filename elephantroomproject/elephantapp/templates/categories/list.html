@@ -10,7 +10,7 @@
         <div class="w3-card-3 w3-dark-grey">
           <a href="{% url 'elephantapp:category' category.id %}">
           <h2> Category title: {{category.name}} </h2>
-          <img src="{{category.category_icon}}" alt="elephantapp icon">
+          <img class="img" src="{{category.category_icon}}" alt="elephantapp icon">
           </a>
             <ul>
                 <li>
@@ -22,6 +22,7 @@
         </fieldset>
         <fieldset>
         <div class="flex-container">
+          <a href="{% url 'elephantapp:topic_form' %}">Create A Topic</a>
           <div>
           <h4>Topics in this Category</h4>
           {% for topic in all_topics %}

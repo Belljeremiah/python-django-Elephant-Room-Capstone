@@ -23,6 +23,8 @@ body {
   ::selection {
     background: #0080FF;
     text-shadow: none;
+    height: 300px;
+    width: 300px;
   }
   
   pre {
@@ -90,7 +92,7 @@ body {
     width: 20%;
     height: 150px;
     padding: 12px 20px;
-    overflow: none;
+    overflow: hidden;
     box-sizing: border-box;
     border: 2px solid rgb(250, 124, 6);
     border-radius: 4px;
@@ -103,9 +105,16 @@ body {
     text-overflow: clip;
   }
   .textcontainer {
-    white-space: nowrap;
+    white-space: wrap;
     overflow: hidden;
     border-left:1em solid transparent;
     border-right:1em solid transparent;
-    text-overflow: clip;
+  }
+  .img {
+    width: 300px;
+    height: 300px;
+  }
+  .logo {
+    height: 150px;
+    width: 150px;
   }

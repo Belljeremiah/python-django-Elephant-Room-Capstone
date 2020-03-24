@@ -14,7 +14,7 @@
     <ul>
         <li>
             <a href="{% url 'elephantapp:profile' profile.id %}">  
-            <h1>Avatar Image: {{profile.avatar_image}}</h1>
+            <img class="img" src="{{profile.avatar_image}}" alt="avatar image">
             <h1>Age: {{profile.age}}</h1>
             <h1>Relationship Status: {{profile.relationship_status}}</h1>
             <h1>Political Affiliation: {{profile.political_affiliation}}</h1>
