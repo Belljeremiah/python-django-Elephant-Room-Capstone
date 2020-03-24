@@ -8,19 +8,19 @@
     <title>Profile</title>
   </head>
   <body>
-    <h1>Profile</h1>
+    {% for profile in all_profiles %}
+    <h1>Welcome to your Profile {{profile.user}}</h1>
 
     <ul>
-    {% for profile in all_profiles %}
         <li>
             <a href="{% url 'elephantapp:profile' profile.id %}">  
-            Age: {{profile.age}}
-            Relationship Status: {{profile.relationship_status}}
-            Political Affiliation: {{profile.political_affiliation}}
-            Evidential Preference: {{profile.evidential_preference}}
-            Debate Style Preference: {{profile.debate_style_preference}}
-            Avatar Image: {{profile.avatar_image}}
-            Theological Affiliation: {{profile.theological_affiliation}}
+            <h1>Avatar Image: {{profile.avatar_image}}</h1>
+            <h1>Age: {{profile.age}}</h1>
+            <h1>Relationship Status: {{profile.relationship_status}}</h1>
+            <h1>Political Affiliation: {{profile.political_affiliation}}</h1>
+            <h1>Evidential Preference: {{profile.evidential_preference}}</h1>
+            <h1>Debate Style Preference: {{profile.debate_style_preference}}</h1>
+            <h1>Theological Affiliation: {{profile.theological_affiliation}}</h1>
             </a>
         </li>
     {% endfor %}

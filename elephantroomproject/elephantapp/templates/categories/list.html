@@ -1,27 +1,47 @@
 {% extends 'shared/base.html' %}
 {% load static  %}
 {% block content %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Category</title>
-  </head>
-  <body>
-    <h1>Category</h1>
 
-    <ol>
-    {% for category in all_categories %}
-        <li>
+        {% for category in all_categories %}
+        <div class="cardrow">
+          <div class="card-col">
+            <div class="card-body">
+        <fieldset>  
+        <div class="w3-card-3 w3-dark-grey">
           <a href="{% url 'elephantapp:category' category.id %}">
-            {{category.user}}
-            {{category.name}}
-            {{category.blurb}}
-            {{category.category_icon}}
+          <h2> Category title: {{category.name}} </h2>
+          <img src="{{category.category_icon}}" alt="elephantapp icon">
           </a>
-        </li>
-    {% endfor %}
-    </ol>
-  </body>
-</html>
-{% endblock %}
+            <ul>
+                <li>
+                  <a href="{% url 'elephantapp:category' category.id %}">
+                    <p class="">Category Description: {{category.blurb}}</p>
+                  </a>
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset>
+        <div class="flex-container">
+          <div>
+          <h4>Topics in this Category</h4>
+          {% for topic in all_topics %}
+          {% if topic.category_id == category.id %}
+          <a href="{% url 'elephantapp:topic' topic.id %}">
+          <div>
+          <h5> Title: {{topic.title}} </h5>
+          <h4>Topic Description</h4>
+          <div class="textcontainer" >
+          <p class="textarea"> {{topic.blurb}}</p>
+          </div>
+          </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        </fieldset>
+        
+      {% endfor %}
+      {% endblock %}
+            </div>
+          </div>
+        </div>      
