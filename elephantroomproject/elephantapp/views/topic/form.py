@@ -10,8 +10,8 @@ def topic_form(request):
     if request.method == 'GET':
         current_user = request.user
         current_profile_user = Profile.objects.get(user_id=current_user.id)
-        all_topics = Topic.objects.all()
-        all_categories = Category.objects.all()
+        all_topics = Topic.objects.filter(user=current_user)
+        all_categories = Category.objects.filter(user=current_user)
         template = 'topics/form.html'
         context = {
             'all_topics': all_topics,

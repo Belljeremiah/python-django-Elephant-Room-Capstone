@@ -8,21 +8,27 @@
     <title>Profile</title>
   </head>
   <body>
-    <h1>Profile</h1>
+    {% for profile in all_profiles %}
+    <h1>Welcome to your Profile {{profile.user}}</h1>
 
     <ul>
-    {% for profile in all_profiles %}
         <li>
             <a href="{% url 'elephantapp:profile' profile.id %}">  
-            Age: {{profile.age}}
-            Relationship Status: {{profile.relationship_status}}
-            Political Affiliation: {{profile.political_affiliation}}
-            Evidential Preference: {{profile.evidential_preference}}
-            Debate Style Preference: {{profile.debate_style_preference}}
-            Avatar Image: {{profile.avatar_image}}
-            Theological Affiliation: {{profile.theological_affiliation}}
+            <img class="img" src="{{profile.avatar_image}}" alt="avatar image">
+            <h4>Age: {{profile.age}}</h4>
+            <h4>Relationship Status: {{profile.relationship_status}}</h4>
+            <h4>Political Affiliation: {{profile.political_affiliation}}</h4>
+            <h4>Evidential Preference: {{profile.evidential_preference}}</h4>
+            <h4>Debate Style Preference: {{profile.debate_style_preference}}</h4>
+            <h4>Theological Affiliation: {{profile.theological_affiliation}}</h4>
             </a>
         </li>
+
+        <fieldset>
+          <h3>Think of Categories as your room and Topics as the Elephants in them you want to discuss.</h3>
+        </fieldset>
+        <a href="{% url 'elephantapp:category_form' %}"><button>Create a Category</button></a>
+        <a href="{% url 'elephantapp:topic_form' %}"><button>Create a Topic</button></a>
     {% endfor %}
     </ul>
   </body>

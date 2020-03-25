@@ -1,9 +1,9 @@
 body {
     background-color: black;
     background-image: radial-gradient(rgba(3, 3, 3, 0.75), black 120%);
-    height: 100vh;
+    /* height: 100vh; */
     margin: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
     padding: 2rem;
     color: rgb(250, 124, 6);
     font: 1.3rem Inconsolata, monospace;
@@ -14,8 +14,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw; */
+    /* height: 100vh; */
     background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px);
     pointer-events: none;
   }
@@ -23,6 +23,8 @@ body {
   ::selection {
     background: #0080FF;
     text-shadow: none;
+    height: 300px;
+    width: 300px;
   }
   
   pre {
@@ -38,8 +40,12 @@ body {
       padding: 5px;
       margin: 2px;
   }
+  button:hover{
+    color: white;
+    cursor: pointer;
+  }
   
-  /* a {text-decoration: none; color: white;} */
+  /* a {text-decoration: none; color: orange;} */
   a:link { text-decoration: none; color:rgb(250, 124, 6); }
   a:visited { text-decoration: none; color:rgb(250, 124, 6); }
   a:hover { text-decoration: none; color:rgb(250, 124, 6); }
@@ -63,22 +69,18 @@ body {
   .scrollbox {
       height:30%;
       width:60%;
-      border:1px solid #ccc;
-      overflow:auto;
+      border:1px solid rgb(250, 124, 6);
+      /* overflow:auto; */
   }
   
   .commandsscrollbox {
       height:40%;
       width:75%;
-      /* border:1px solid #ccc; */
-      overflow:auto;
   }
   
   .listscrollbox {
       height:40%;
       width:40%;
-      /* border:1px solid #ccc; */
-      overflow:auto;
   }
     
     @keyframes spin {
@@ -89,4 +91,46 @@ body {
   #description {
       height: 12em;
       width: 50em;
+  }
+  .textarea {
+    /* width: 20%; */
+    height: 150px;
+    padding: 12px 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 2px solid rgb(250, 124, 6);
+    border-radius: 4px;
+    background-color: #686060;
+  }
+  .topic-card{
+    flex-basis: 28%;
+  }
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .textcontainer {
+    vertical-align: bottom;
+    /* white-space: wrap; */
+    overflow: hidden;
+    border-left:1em solid transparent;
+    border-right:1em solid transparent;
+  }
+  .img {
+    width: 300px;
+    height: 300px;
+  }
+  .logo {
+    height: 150px;
+    width: 150px;
+  }
+  .home-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .home-logo {
+    max-width: 100%;
+    height: auto;
   }

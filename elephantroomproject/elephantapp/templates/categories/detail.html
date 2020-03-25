@@ -5,9 +5,9 @@
 <html>
     <h1 class='title'>{{category.name}}</h1>
     <body>
-      <h1>User Name: {{category.user}}</h1>
-      <h1>Category Description(blurb): {{category.blurb}}</h1>
-      <h1>Category Icon Placeholder: {{category.category_icon}}</h1>
+      <h3>User Name: {{category.user}}</h3>
+      <h3>Category Description: {{category.blurb}}</h3>
+      <img src="{{category.category_icon}}" alt="category icon"/>
         
       <section id="category-actions">
       <form action="{% url 'elephantapp:category' category.id %}" method="POST">

@@ -1,21 +1,15 @@
 {% extends 'shared/base.html' %}
+{% load static %}
 
 {% block content %}
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Elephant Room</title>
-</head>
-
-<body>
-
     <h1>Welcome to the Elephant Room</h1>
-
-</body>
-
-</html>
-
+    <div class="home-logo-container">
+        <img class="home-logo" src="{% static 'images/erlogo.png' %}" alt="Elephant Room Logo">
+    </div>
+    {% if user.is_authenticated == False %}
+    
+        <a href="{% url 'elephantapp:login' %}"><button>Login</button></a>
+        <a href="{% url 'elephantapp:register' %}"><button>Register</button></a>
+    
+    {% endif %}
 {% endblock content %}

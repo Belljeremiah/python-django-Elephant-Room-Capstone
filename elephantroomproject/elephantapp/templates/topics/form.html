@@ -15,56 +15,59 @@
             <input id="title" type="text" name="title" value="{{ topic.title }}">
         </fieldset>
         <fieldset>
+            <label for="image_link">Image Url: {{ topic.image_link }} </label>
+            <input id="image_link" type="text" name="image_link" value="{{ topic.image_link }}">
+        </fieldset>
+        <fieldset>
             <label for="stance_text_body">Stance: {{ topic.stance_text_body }} </label>
             <input id="stance_text_body" type="text" name="stance_text_body" value="{{ topic.stance_text_body }}">
         </fieldset>
         <fieldset>
-            <label for="is_anecdote">This is A story from my Life or an Anecdote: </label>
-            {% if topic.is_anecdote is not None %}
-            <input id="is_anecdote" type="radio" name="is_anecdote" value={{ topic.is_anecdote }}>
-            {% else %}
-            <input id="is_anecdote" type="radio" name="is_anecdote" value=True>
-            {% endif %}
-        </fieldset>
-        <fieldset>
-            <label for="is_citable">This is a Citable Source: {{ topic.is_citable }} </label>
-            {% if topic.is_citable is not None %}
-            <input id="is_citable" type="radio" name="is_citable" value={{ topic.is_citable }}>
-            {% else %}
-            <input id="is_citable" type="radio" name="is_citable" value=True>
-            {% endif %}
-        </fieldset>
-        <fieldset>
-            <label for="blurb">A brief summary of the Topic(blurb): {{ topic.blurb }} </label>
+            <label for="blurb">A brief summary: {{ topic.blurb }} </label>
             <input id="blurb" type="text" name="blurb" value="{{ topic.blurb }}">
         </fieldset>
         <fieldset>
-            <label for="resource_link">(resource_link): {{ topic.resource_link }} </label>
-            <input id="resource_link" type="url" name="resource_link" value="{{ topic.resource_link }}">
+        <h3>Anecdotes or Life Experience Evidence</h3>
+            <fieldset>
+                <label for="is_anecdote">This is A story from my Life or an Anecdote:(click for true)</label>
+                {% if topic.is_anecdote is not None %}
+                <input id="is_anecdote" type="radio" name="is_anecdote" value={{ topic.is_anecdote }}>
+                {% else %}
+                <input id="is_anecdote" type="radio" name="is_anecdote" value=True>
+                {% endif %} 
+                <br> 
+                <label for="anecdote_body">Your Story or Experience: {{ topic.anecdote_body }} </label>
+                <input id="anecdote_body" type="text" name="anecdote_body" value="{{ topic.anecdote_body }}">
+            </fieldset>
         </fieldset>
         <fieldset>
-            <label for="image_link">Topic(image_link): {{ topic.image_link }} </label>
-            <input id="image_link" type="text" name="image_link" value="{{ topic.image_link }}">
-        </fieldset>
-        <fieldset>
-            <label for="is_free_resource">(is_free_resource): {{ topic.is_free_resource }} </label>
-            {% if topic.is_free_resource is not None %}
-            <input id="is_free_resource" type="radio" name="is_free_resource" value={{ topic.is_free_resource }}>
-            {% else %}
-            <input id="is_free_resource" type="radio" name="is_free_resource" value=True>
-            {% endif %}
+        <h3>Citable Sources and Evidence</h3>
+            <fieldset>
+                <label for="is_citable">Peer Reviewed Source(Click for True): {{ topic.is_citable }} </label>
+                {% if topic.is_citable is not None %}
+                <input id="is_citable" type="radio" name="is_citable" value={{ topic.is_citable }}>
+                {% else %}
+                <input id="is_citable" type="radio" name="is_citable" value=True>
+                {% endif %}
+                <label for="is_free_resource">Free to view(Click for True): {{ topic.is_free_resource }} </label>
+                {% if topic.is_free_resource is not None %}
+                <input id="is_free_resource" type="radio" name="is_free_resource" value={{ topic.is_free_resource }}>
+                {% else %}
+                <input id="is_free_resource" type="radio" name="is_free_resource" value=True>
+                {% endif %}
+            </fieldset>
+            <fieldset>
+                <label for="resource_link">Resource Url: {{ topic.resource_link }} </label>
+                <input id="resource_link" type="url" name="resource_link" value="{{ topic.resource_link }}">
+            </fieldset>
         </fieldset>
         <fieldset>  
-            <label for="is_proponent">Topic(is_proponent): {{ topic.is_proponent}} </label>
+            <label for="is_proponent">I am a proponent(Click for True): {{ topic.is_proponent}} </label>
             {% if topic.is_proponent is not None %}
             <input id="is_proponent" type="radio" name="is_proponent" value={{ topic.is_proponent }}>
             {% else %}
             <input id="is_proponent" type="radio" name="is_proponent" value=True>
             {% endif %}
-        </fieldset>
-        <fieldset>  
-            <label for="anecdote_body">Topic(anecdote_body): {{ topic.anecdote_body }} </label>
-            <input id="anecdote_body" type="text" name="anecdote_body" value="{{ topic.anecdote_body }}">
         </fieldset>
         <fieldset>
             <label for="category">Category: </label>
@@ -78,9 +81,9 @@
 
         {% if topic.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
-            <input type="submit" value="Update" />
+            <button type="submit" value="Update">Update</button>
         {% else %}
-            <input type="submit" value="Add It" />
+            <button type="submit" value="Add It">Add It</button>
         {% endif %}
     </form>
     {% endblock %}
