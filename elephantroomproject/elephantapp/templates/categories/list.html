@@ -3,11 +3,7 @@
 {% block content %}
 
         {% for category in all_categories %}
-        {% comment %} <div class="cardrow">
-          <div class="card-col">
-            <div class="card-body"> {% endcomment %}
         <fieldset>  
-        {% comment %} <div class="w3-card-3 w3-dark-grey"> {% endcomment %}
           <a href="{% url 'elephantapp:category' category.id %}">
             <h2> Category title: {{category.name}} </h2>
             <img class="img" src="{{category.category_icon}}" alt="elephantapp icon">
@@ -19,8 +15,8 @@
                   </a>
                 </li>
             </ul>
-        </fieldset>
-        <fieldset>
+        {% comment %} </fieldset>
+        <fieldset> {% endcomment %}
           <a href="{% url 'elephantapp:topic_form' %}"><button>Create A Topic</button></a>
           <div>
             <h4>Topics in this Category</h4>

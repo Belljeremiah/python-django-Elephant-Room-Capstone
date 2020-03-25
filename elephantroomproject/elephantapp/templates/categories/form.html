@@ -16,19 +16,19 @@
             <input id="name" type="text" name="name" value="{{ category.name }}">
         </fieldset>
         <fieldset>
-            <label for="blurb">A brief summary of the Topic(blurb): {{ category.blurb }} </label>
+            <label for="blurb">Summary: {{ category.blurb }} </label>
             <input id="blurb" type="text" name="blurb" value="{{ category.blurb }}">
         </fieldset>
         <fieldset>
-            <label for="category_icon">(category_icon): {{ category.category_icon }} </label>
+            <label for="category_icon">Image Url: {{ category.category_icon }} </label>
             <input id="category_icon" type="text" name="category_icon" value="{{ category.category_icon }}">
         </fieldset>
         
         {% if category.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
-            <input type="submit" value="Update" />
+            <button type="submit" value="Update">Update</button>
         {% else %}
-            <input type="submit" value="Add It" />
+            <button type="submit" value="Add It">Add It</button>
         {% endif %}
       </form>
     </body>

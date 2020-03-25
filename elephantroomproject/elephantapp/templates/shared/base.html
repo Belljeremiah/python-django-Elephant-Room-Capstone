@@ -14,27 +14,25 @@
 
 <body>
     <nav id="site-nav">
-        <ol class="navList">
             {% comment %} {% if user.is_authenticated %}
             {% else %}
             {% endif %} {% endcomment %}
             {% if user.is_authenticated %}
             {% comment %} Rename and Display Buttons in a more recognizable button, Topic Form looks like two differnt buttons {% endcomment %}
+        <ol class="navList">
             <li class="navList__route"><a href="{% url 'elephantapp:home' %}">Home</a></li>
             <li class="navList__route"><a href="{% url 'elephantapp:topics' %}">Topics</a></li>
             <li class="navList__route"><a href="{% url 'elephantapp:categories' %}">Categories</a></li>
             <li class="navList__route"><a href="{% url 'elephantapp:topic_form' %}">Create A Topic</a></li>
             <li class="navList__route"><a href="{% url 'elephantapp:category_form' %}">Create a Category</a></li>
             <li class="navList__route"><a href="{% url 'elephantapp:profiles' %}">Profile</a></li>
-            <li class="navList__route"><a href="{% url 'elephantapp:logout' %}">Logout</a></li>  
+            <li class="navList__route"><a href="{% url 'elephantapp:logout' %}">Logout</a></li>   
+            <img class="logo" src="{% static 'images/erlogo.png' %}" alt="Elephant Room Logo">
+        </ol>
             {% else %}
-                <li class="navList__route"><a href="{% url 'elephantapp:login' %}">Login</a></li>
-                <li class="navList__route"><a href="{% url 'elephantapp:register' %}">Register</a></li>   
             {% endif %}
 
 
-            <img class="logo" src="{% static 'images/erlogo.png' %}" alt="Elephant Room Logo">
-        </ol>
     </nav>
 
     {% block content %}
