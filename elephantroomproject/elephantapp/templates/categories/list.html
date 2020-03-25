@@ -3,14 +3,14 @@
 {% block content %}
 
         {% for category in all_categories %}
-        <div class="cardrow">
+        {% comment %} <div class="cardrow">
           <div class="card-col">
-            <div class="card-body">
+            <div class="card-body"> {% endcomment %}
         <fieldset>  
-        <div class="w3-card-3 w3-dark-grey">
+        {% comment %} <div class="w3-card-3 w3-dark-grey"> {% endcomment %}
           <a href="{% url 'elephantapp:category' category.id %}">
-          <h2> Category title: {{category.name}} </h2>
-          <img class="img" src="{{category.category_icon}}" alt="elephantapp icon">
+            <h2> Category title: {{category.name}} </h2>
+            <img class="img" src="{{category.category_icon}}" alt="elephantapp icon">
           </a>
             <ul>
                 <li>
@@ -21,28 +21,29 @@
             </ul>
         </fieldset>
         <fieldset>
-        <div class="flex-container">
-          <a href="{% url 'elephantapp:topic_form' %}">Create A Topic</a>
+          <a href="{% url 'elephantapp:topic_form' %}"><button>Create A Topic</button></a>
           <div>
-          <h4>Topics in this Category</h4>
-          {% for topic in all_topics %}
-          {% if topic.category_id == category.id %}
-          <a href="{% url 'elephantapp:topic' topic.id %}">
-          <div>
-          <h5> Title: {{topic.title}} </h5>
-          <h4>Topic Description</h4>
-          <div class="textcontainer" >
-          <p class="textarea"> {{topic.blurb}}</p>
+            <h4>Topics in this Category</h4>
+            <div class="flex-container">
+              {% for topic in all_topics %}
+              {% if topic.category_id == category.id %}
+                  <div class="topic-card">
+                    <a href="{% url 'elephantapp:topic' topic.id %}">
+                    <h5> Title: {{topic.title}} </h5>
+                    <h4>Topic Description</h4>
+                    <div class="textcontainer">
+                      <p class="textarea"> {{topic.blurb}}</p>
+                    </div>
+                    </a>
+                  </div>
+              {% endif %}
+              {% endfor %}
+            </div>
           </div>
-          </div>
-          </div>
-        </div>
-        {% endif %}
-        {% endfor %}
         </fieldset>
         
       {% endfor %}
       {% endblock %}
-            </div>
+            {% comment %} </div>
           </div>
-        </div>      
+        </div>       {% endcomment %}
