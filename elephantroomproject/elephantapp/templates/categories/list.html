@@ -2,6 +2,10 @@
 {% load static  %}
 {% block content %}
 
+        {% if category.id == None %}
+        <h1 class="title">You Don't seem To have Any Categories You should Make One!</h1>
+        <a href="{% url 'elephantapp:category_form' %}"><button>Create a Category</button></a>
+        {% endif %}
         {% for category in all_categories %}
         <fieldset>  
           <a href="{% url 'elephantapp:category' category.id %}">
@@ -15,8 +19,7 @@
                   </a>
                 </li>
             </ul>
-        {% comment %} </fieldset>
-        <fieldset> {% endcomment %}
+          
           <a href="{% url 'elephantapp:topic_form' %}"><button>Create A Topic</button></a>
           <div>
             <h4>Topics in this Category</h4>

@@ -13,6 +13,7 @@ def topic_list(request):
         current_user = request.user
         current_profile_user = Profile.objects.filter(user=current_user)
         all_topics = Topic.objects.filter(user=current_user)
+        all_categories = Category.objects.filter(user=current_user)
         
         title = request.GET.get('title', None)
                 
@@ -21,7 +22,8 @@ def topic_list(request):
         
         template = 'topics/list.html'
         context = {
-            'all_topics': all_topics
+            'all_topics': all_topics,
+            'all_categories': all_categories
         }
 
         return render(request, template, context)

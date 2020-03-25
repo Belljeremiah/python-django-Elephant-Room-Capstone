@@ -1,25 +1,22 @@
 {% extends 'shared/base.html' %}
 {% load static  %}
 {% block content %}
-<!DOCTYPE html>
-<html>
-  <body>
-    
-    <section id="topic-details">
-      <h1 class='title'>Title: {{topic.title}}</h1>
-      <h2 class='title'>Topic Description: {{topic.blurb}}</h2>
-      <h2 class='title'>Associated Category: {{category.name}}</h2>
-      <h2 class='title'>Stance Text Body: {{topic.stance_text_body}}</h2>
+
+    <fieldset id="topic-details">
+      <h3>Title: {{topic.title}}</h3>
+      <h4>Topic Description: {{topic.blurb}}</h4>
+      <img class="img" src="{{topic.image_link}}" alt="topic image">
+      <h4>Associated Category: {{category.name}}</h4>
+      <h4>Stance: {{topic.stance_text_body}}</h4>
       {% comment %} <a href="{% url topic.resource_link %}"> {% endcomment %}
-      <h2 class='title'>Resource Link: {{topic.resource_link}}</h2>
+      <h4>Resource Url: {{topic.resource_link}}</h4>
       {% comment %} </a> {% endcomment %}
-      <img src="{{topic.image_link}}" alt="topic image">
-      <h2 class='title'>Is Free {{topic.is_free_resource}}</h2>
-      <h2 class='title'>I am a Proponent of :{{topic.is_proponent}}</h2>
-      <h2 class='title'>Is Anecdote{{topic.is_anecdote}}</h2>
-      <h3 class='title'>Anecdote Body: {{topic.anecdote_body}}</h3>
-      <h2 class='title'>Is Citable{{topic.is_citable}}</h2>
-    </section>
+      <h4>Is Free {{topic.is_free_resource}}</h4>
+      <h4>I am a Proponent of: {{topic.is_proponent}}</h4>
+      <h4>This is a story or anecdote: {{topic.is_anecdote}}</h4>
+      <h4>Anecdote: {{topic.anecdote_body}}</h4>
+      <h4>This is a Citable Source: {{topic.is_citable}}</h4>
+    </fieldset>
 
     <section id="topic-actions">
   <form action="{% url 'elephantapp:topic' topic.id %}" method="POST">

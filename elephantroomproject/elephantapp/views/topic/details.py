@@ -5,31 +5,20 @@ from django.contrib.auth.decorators import login_required
 from elephantapp.models import Topic, Category, Profile
 from ..connection import Connection
 
-# def create_topic():
-    
-#     topic = Topic.objects.all()
-#     category = Category.objects.all()
-#     profile = Profile.objects.all()
-    
-#     topic.profile = profile
-#     topic.category = category
-    
-#     return topic
-
-# # Getting a Single Topic
-# def get_topic(topic_id):
-    
-
 @login_required
 def topic_details(request, topic_id):
     
     if request.method == 'GET':
+        current_user = request.user
+        current_profile_user = Profile.objects.get(user_id=current_user.id)
         topic = Topic.objects.get(pk=topic_id)
+        all_categories = Category.objects.filter(user=current_user)
         print(topic.id)
         
         template = 'topics/detail.html'
         context = {
-            'topic': topic
+            'topic': topic,
+            'all_categories': all_categories
         }
         
         return render(request, template, context)

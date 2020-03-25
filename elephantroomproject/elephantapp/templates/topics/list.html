@@ -1,35 +1,14 @@
 {% extends 'shared/base.html' %}
 {% load static  %}
 {% block content %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Topic</title>
-  </head>
-  <body>
     
-    <h1>Topic</h1>
-    <fieldset>
-      {% for category in all_categories %}
-    <option value="{{ category.id }}">{{ category.name }}</option>
-      {% endfor %}
-    </fieldset>
-
+    <h1>Topics</h1>
     <ol>
     {% for topic in all_topics %}
         <li>
           <a href="{% url 'elephantapp:topic' topic.id %}">
-            {{topic.title}}
-            {{topic.stance_text_body}}
-            {{topic.is_anecdote}}
-            {{topic.is_citable}}
-            {{topic.blurb}}
-            {{topic.resource_link}}
-            {{topic.image_link}}
-            {{topic.is_free_resource}}
-            {{topic.is_proponent}}
-            {{topic.anecdote_body}} 
+            <h4>{{topic.title}}</h4>
+            <image class="img" src="{{topic.image_link}}" alt="topic image"> 
           </a>
         </li>
     {% endfor %}
