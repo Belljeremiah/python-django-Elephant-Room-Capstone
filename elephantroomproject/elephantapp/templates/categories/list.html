@@ -3,8 +3,9 @@
 {% block content %}
 
         {% if category.id == None %}
-        <h1 class="title">You Don't seem To have Any Categories You should Make One!</h1>
         <a href="{% url 'elephantapp:category_form' %}"><button>Create a Category</button></a>
+        {% else %}
+        <h1 class="title">You Don't seem To have Any Categories You should Make One!</h1>
         {% endif %}
         {% for category in all_categories %}
         <fieldset>  
@@ -31,7 +32,7 @@
                     <h5> Title: {{topic.title}} </h5>
                     <h4>Topic Description</h4>
                     <div class="textcontainer">
-                      <p class="textarea"> {{topic.blurb}}</p>
+                      <textarea class="textarea"> {{topic.blurb}}</textarea>
                     </div>
                     </a>
                   </div>
