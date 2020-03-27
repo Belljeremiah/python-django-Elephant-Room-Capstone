@@ -59,10 +59,10 @@
                             <button class="btn btn-warning btn-sm">Details</button>
                         </form>
                     </div>
-                    <div class="card-footer text-muted">
+                    <div class="card-footer text-muted span-pill-container">
                             <div>
                                 <span class="badge badge-pill badge-info">Proponent: {{topic.is_proponent}}</span>
-                                <span class="badge badge-pill badge-secondary">Resource Link:{{topic.resource_link}}</span>
+                                <a href="{{topic.resource_link}}"><span class="badge badge-pill badge-secondary">Resource Link:{{topic.resource_link}}</span></a>
                                 <span class="badge badge-pill badge-warning">Free: {{topic.is_free_resource}}</span>
                                 <span class="badge badge-pill badge-warning">Citable Status: {{topic.is_citable}}</span>
                             </div> 
