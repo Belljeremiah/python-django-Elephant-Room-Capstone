@@ -3,7 +3,7 @@
 {% block content %}
 <div class="card register-card" style="width: 20rem; margin-left: auto; margin-right: auto; margin-top: 50px;">
     <div class="card-body" style="margin-left: auto; margin-right: auto; ">
-        <h2 class="card-title"><center>Register As a New User a Profile will be automatically Generated for You</center></h2>
+        <h2 class="card-title"><center>Register an Elephant Room Profile</center></h2>
         <form action="{% url 'elephantapp:register' %}" method="post">
             {% csrf_token %}
     <!--     These values will be saved as part of a new User instance -->
@@ -95,7 +95,7 @@
                 </select>
             </div>
             </fieldset>
-                <center><button type="submit" class="btn btn-primary btn-md" value="Register" /></center>
+                <center><button type="submit" class="btn btn-primary btn-lg" value="Register" />Register</center>
             
             </form>
         </div>

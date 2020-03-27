@@ -3,12 +3,16 @@
 {% block content %}
 
         <!-- Creating a Button To Activate a Modal -->
-        <center><a href="{% url 'elephantapp:category_form' %}"><button type="button" class="btn btn-primary btn-md dashboard" data-toggle="modal" data-target="#exampleModal">
-        New Category
-        </button></center></a>
+        <left><button type="button" class="btn btn-primary btn-md dashboard" data-toggle="modal" data-target="#exampleModal">
+        Create a Category
+        </button></left></a>
+
+        <left><a href="{% url 'elephantapp:topic_form' %}"><button type="button" class="btn btn-primary btn-md dashboard" data-toggle="modal" data-target="#exampleModal">
+        Create a Topic
+        </button></left></a>
 
         <!-- Modal for Categories -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -20,11 +24,13 @@
                 <form action="{% url 'elephantapp:categories' %}" method="post">
                     <div class="modal-body">
                         {% csrf_token %}
-                        <input id="category" type="text" name="category"  value="{{ category.name }}" placeholder="Enter Category Name" class="form-control" required>
+                        <input id="name" type="text" class="form-control" name="name" placeholder="Category Name" value="{{ category.name }}" required>
+                        <input id="blurb" type="text" class="form-control" name="blurb" placeholder="Category Description" value="{{ category.blurb }}" required>
+                        <input id="category_icon" type="text" class="form-control" name="category_icon" placeholder="Image Url" value="{{ category.category_icon }}" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" value="Add" class="btn btn-primary" name="actual_method" value="category">Add</button>
+                        <button type="submit" value="Add It" class="btn btn-primary btn-lg" name="actual_method" value="category">Add It</button>
                     </div>
                 </form>
             </div>
@@ -34,6 +40,7 @@
     {% for category in all_categories %}
         
         <h4 style="margin-left:15px;" classname"category_name">{{ category.name }}</h4>
+        <h5 style="margin-left:15px;" classname"category_blurb">Description:{{ category.blurb }}</h5>
             <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto">
             
             {% for topic in all_topics %}

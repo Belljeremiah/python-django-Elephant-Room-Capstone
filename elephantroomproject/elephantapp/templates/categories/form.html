@@ -1,36 +1,44 @@
 {% extends 'shared/base.html' %}
-{% load static %}
+
 
 {% block content %}
-  <body>
-    <h1>Create a Category</h1>
   
     {% if category.id is not None %}
-    <form action="{% url 'elephantapp:category' category.id %}" method="post">
+      <div class="card form-card" style="margin-left: auto; margin-right: auto; margin-top: 50px; max-width: 1000px;">
+        <div class="card-body">
+          <h1>Create a Category</h1>
+          <form action="{% url 'elephantapp:category' category.id %}" method="post">
     {% else %}
-    <form action="{% url 'elephantapp:categories' %}" method="post">
+            <div class="card form-card" style="margin-left: auto; margin-right: auto; margin-top: 50px; max-width: 1000px;">
+              <form action="{% url 'elephantapp:categories' %}" method="post">
     {% endif %}
-      {% csrf_token %}
-        <fieldset>
-            <label for="name">Name: {{ category.name }} </label>
-            <input id="name" type="text" name="name" value="{{ category.name }}">
-        </fieldset>
-        <fieldset>
-            <label for="blurb">Summary: {{ category.blurb }} </label>
-            <input id="blurb" type="text" name="blurb" value="{{ category.blurb }}">
-        </fieldset>
-        <fieldset>
-            <label for="category_icon">Image Url: {{ category.category_icon }} </label>
-            <input id="category_icon" type="text" name="category_icon" value="{{ category.category_icon }}">
-        </fieldset>
+    {% csrf_token %}
+        <div class="form-group row">
+            <div class="col-sm-10">
+            <label for="name" class="col-sm-2 col-form-label">Name:{{ category.name }} </label>
+              <input id="name" type="text" class="form-control" name="name" value="{{ category.name }}" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+            <label for="blurb" class="col-sm-2 col-form-label">Summary:{{ category.blurb }} </label>
+            <input id="blurb" type="text" class="form-control" name="blurb" value="{{ category.blurb }}" required>
+            </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <label for="category_icon" class="col-sm-2 col-form-label">Image Url:{{ category.category_icon }} </label>
+            <input id="category_icon" type="text" class="form-control" name="category_icon" value="{{ category.category_icon }}" required>
+          </div>
+        </div>
         
         {% if category.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
-            <button type="submit" value="Update">Update</button>
+            <button type="submit" value="Update" class="btn btn-primary btn-lg">Update</button>
         {% else %}
-            <button type="submit" value="Add It">Add It</button>
+            <button type="submit" value="Add It" class="btn btn-primary btn-lg">Add It</button>
         {% endif %}
       </form>
-    </body>
-  </html>
+    </div>
+  </div>
   {% endblock %}
