@@ -15,7 +15,6 @@
 }
 
 body {
-  background: url(../../static/styles/Michelle_BG.png) no-repeat center center fixed;
   background-size: cover;
   height: 100%;
   /* overflow: hidden; */

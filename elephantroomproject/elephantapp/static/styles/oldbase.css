@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: rgb(20, 18, 18);
     background-image: radial-gradient(rgba(32, 29, 29, 0.75), black 120%);
     margin: 0;
@@ -42,7 +42,7 @@ body {
   }
   
   /* a {text-decoration: none; color: orange;} */
-  a:link { text-decoration: none; color:rgb(250, 124, 6); }
+  /* a:link { text-decoration: none; color:rgb(250, 124, 6); }
   a:visited { text-decoration: none; color:rgb(250, 124, 6); }
   a:hover { text-decoration: none; color:rgb(250, 124, 6); }
   a:focus { text-decoration: none; color:rgb(250, 124, 6); }
@@ -65,9 +65,9 @@ body {
   .scrollbox {
       height:30%;
       width:60%;
-      border:1px solid rgb(250, 124, 6);
+      border:1px solid rgb(250, 124, 6); */
       /* overflow:auto; */
-  }
+  /* }
   
   .commandsscrollbox {
       height:40%;
@@ -90,7 +90,7 @@ body {
   }
   .textarea {
     /* width: 20%; */
-    height: 150px;
+    /* height: 150px;
     padding: 12px 20px;
     overflow: hidden;
     box-sizing: border-box;
@@ -109,7 +109,7 @@ body {
   .textcontainer {
     vertical-align: bottom;
     /* white-space: wrap; */
-    overflow: hidden;
+    /* overflow: hidden;
     border-left:1em solid transparent;
     border-right:1em solid transparent;
   }
@@ -133,4 +133,4 @@ body {
     object-fit: fill;
     flex-basis: 100%;
     align-self: center;
-  }
+  }   */

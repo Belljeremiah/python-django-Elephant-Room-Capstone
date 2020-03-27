@@ -1,36 +1,34 @@
 {% extends 'shared/base.html' %}
-{% load static  %}
+
 {% block content %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Profile</title>
-  </head>
+
   <body>
     {% for profile in all_profiles %}
-    <h1>Welcome to your Profile {{profile.user}}</h1>
-
-    <ul>
-        <li>
+    <h1>Welcome to your Profile, {{profile.user}}</h1>
+  <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto">
+    <div class="col mb-4">
+      <div class="card h-100 my_project_card">
+        <img class="img" src="{{profile.avatar_image}}" class="card-img-top" alt="avatar image">
+        <div class="card-body">
             <a href="{% url 'elephantapp:profile' profile.id %}">  
-            <img class="img" src="{{profile.avatar_image}}" alt="avatar image">
-            <h4>Age: {{profile.age}}</h4>
-            <h4>Relationship Status: {{profile.relationship_status}}</h4>
-            <h4>Political Affiliation: {{profile.political_affiliation}}</h4>
-            <h4>Evidential Preference: {{profile.evidential_preference}}</h4>
-            <h4>Debate Style Preference: {{profile.debate_style_preference}}</h4>
-            <h4>Theological Affiliation: {{profile.theological_affiliation}}</h4>
+            <h4 style="margin-left:10px;">Age: {{profile.age}}</h4>
+            <h4><span class="greytext">Relationship Status:</span> {{profile.relationship_status}}</h4>
+            <h4><span class="greytext">Political Affiliation:</span> {{profile.political_affiliation}}</h4>
+            <h4><span class="greytext">Evidential Preference:</span> {{profile.evidential_preference}}</h4>
+            <h4><span class="greytext">Debate Style Preference:</span> {{profile.debate_style_preference}}</h4>
+            <h4><span class="greytext">Theological Affiliation:</span> {{profile.theological_affiliation}}</h4>
             </a>
-        </li>
+        </div>
+      </div>
+    </div>
+  </div>
 
         <fieldset>
           <h3>Think of Categories as your room and Topics as the Elephants in them you want to discuss.</h3>
         </fieldset>
-        <a href="{% url 'elephantapp:category_form' %}"><button>Create a Category</button></a>
-        <a href="{% url 'elephantapp:topic_form' %}"><button>Create a Topic</button></a>
+        <a href="{% url 'elephantapp:category_form' %}"><button type="button" class="btn btn-primary">Create a Category</button></a>
+        <a href="{% url 'elephantapp:topic_form' %}"><button type="button" class="btn btn-primary">Create a Topic</button></a>
     {% endfor %}
-    </ul>
   </body>
 </html>
 {% endblock content %}
