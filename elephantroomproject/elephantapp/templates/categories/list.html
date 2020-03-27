@@ -1,49 +1,64 @@
 {% extends 'shared/base.html' %}
-{% load static  %}
+
 {% block content %}
 
-        {% if category.id == None %}
-        <a href="{% url 'elephantapp:category_form' %}"><button>Create a Category</button></a>
-        {% else %}
-        <h1 class="title">You Don't seem To have Any Categories You should Make One!</h1>
-        {% endif %}
-        {% for category in all_categories %}
-        <fieldset>  
-          <a href="{% url 'elephantapp:category' category.id %}">
-            <h2> Category title: {{category.name}} </h2>
-            <img class="img" src="{{category.category_icon}}" alt="elephantapp icon">
-          </a>
-            <ul>
-                <li>
-                  <a href="{% url 'elephantapp:category' category.id %}">
-                    <p class="">Category Description: {{category.blurb}}</p>
-                  </a>
-                </li>
-            </ul>
-          
-          <a href="{% url 'elephantapp:topic_form' %}"><button>Create A Topic</button></a>
-          <div>
-            <h4>Topics in this Category</h4>
-            <div class="flex-container">
-              {% for topic in all_topics %}
+        <!-- Creating a Button To Activate a Modal -->
+        <center><a href="{% url 'elephantapp:category_form' %}"><button type="button" class="btn btn-primary btn-md dashboard" data-toggle="modal" data-target="#exampleModal">
+        New Category
+        </button></center></a>
+
+        <!-- Modal for Categories -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{% url 'elephantapp:categories' %}" method="post">
+                    <div class="modal-body">
+                        {% csrf_token %}
+                        <input id="category" type="text" name="category"  value="{{ category.name }}" placeholder="Enter Category Name" class="form-control" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" value="Add" class="btn btn-primary" name="actual_method" value="category">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        
+    {% for category in all_categories %}
+        
+        <h4 style="margin-left:15px;" classname"category_name">{{ category.name }}</h4>
+            <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto">
+            
+            {% for topic in all_topics %}
+              
               {% if topic.category_id == category.id %}
-                  <div class="topic-card">
-                    <a href="{% url 'elephantapp:topic' topic.id %}">
-                    <h5> Title: {{topic.title}} </h5>
-                    <h4>Topic Description</h4>
-                    <div class="textcontainer">
+                <div class="col mb-4">
+                  <div class="card h-100 my_project_card">
+                    <img src="{{topic.image_link}}" class="card-img-top" alt="Topic Image">
+                    <div class="card-body">
+                      <h5> Title: {{topic.title}} </h5>
+                      <h6>Topic Description</h6>
                       <textarea class="textarea"> {{topic.blurb}}</textarea>
                     </div>
-                    </a>
-                  </div>
-              {% endif %}
-              {% endfor %}
-            </div>
-          </div>
-        </fieldset>
-        
-      {% endfor %}
-      {% endblock %}
-            {% comment %} </div>
-          </div>
-        </div>       {% endcomment %}
+                    <div class="card-footer text-muted">
+                            <div>
+                                <span class="badge badge-pill badge-info">Proponent: {{topic.is_proponent}}</span>
+                                <span class="badge badge-pill badge-secondary">Resource Link:{{topic.resource_link}}</span>
+                                <span class="badge badge-pill badge-warning">Free: {{topic.is_free_resource}}</span>
+                                <span class="badge badge-pill badge-warning">Citable Status: {{topic.is_citable}}</span>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                {%endif%}
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

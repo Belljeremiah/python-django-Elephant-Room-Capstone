@@ -6,38 +6,60 @@
     <meta charset="utf-8">
     <title>Elephant Room</title>
 
-    <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% block css %}
-    {% endblock %}
+    <!-- Base.css shared -->
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/cfddbb69be.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <nav id="site-nav">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #898076">
+        <a class="navbar-brand" href="{% url 'elephantapp:home' %}">
+            <img src="../static/images/erlogo.png" width="30" height="30" class="d-inline-block align-right" alt="Elephant Room Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
             {% comment %} {% if user.is_authenticated %}
             {% else %}
             {% endif %} {% endcomment %}
             {% if user.is_authenticated %}
             {% comment %} Rename and Display Buttons in a more recognizable button, Topic Form looks like two differnt buttons {% endcomment %}
-        <ol class="navList">
-            <li class="navList__route"><a href="{% url 'elephantapp:home' %}">Home</a></li>
-            <li class="navList__route"><a href="{% url 'elephantapp:topics' %}">Topics</a></li>
-            <li class="navList__route"><a href="{% url 'elephantapp:categories' %}">Categories</a></li>
-            <li class="navList__route"><a href="{% url 'elephantapp:topic_form' %}">Create A Topic</a></li>
-            <li class="navList__route"><a href="{% url 'elephantapp:category_form' %}">Create a Category</a></li>
-            <li class="navList__route"><a href="{% url 'elephantapp:profiles' %}">Profile</a></li>
-            <li class="navList__route"><a href="{% url 'elephantapp:logout' %}">Logout</a></li>   
-            <img class="logo" src="{% static 'images/erlogo.png' %}" alt="Elephant Room Logo">
-        </ol>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="{% url 'elephantapp:home' %}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'elephantapp:topics' %}">Topics</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'elephantapp:categories' %}">Categories</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'elephantapp:topic_form' %}">Create A Topic</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'elephantapp:category_form' %}">Create a Category</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'elephantapp:profiles' %}">Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'elephantapp:logout' %}">Logout</a></li>   
+        </ul>
             {% else %}
             {% endif %}
+    </div>
+</nav>
 
-
-    </nav>
 
     {% block content %}
     {% endblock %}
-
+    <script src="static/scripts/sds.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
 

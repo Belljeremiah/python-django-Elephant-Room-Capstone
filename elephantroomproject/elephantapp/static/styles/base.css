@@ -1,136 +1,93 @@
+.navList {
+  list-style-type: none;
+  display: flex;
+  border: px solid lightgray;
+  padding: 1em;
+  width: 100%;
+}
+
+.navList__route {
+  margin: 0 0.5em;
+}
+
+.navbar-brand {
+  font-family: 'Permanent Marker';
+}
+
 body {
-    background-color: rgb(20, 18, 18);
-    background-image: radial-gradient(rgba(32, 29, 29, 0.75), black 120%);
-    margin: 0;
-    padding: 2rem;
-    color: rgb(250, 124, 6);
-    font: 1.3rem Inconsolata, monospace;
-    text-shadow: 0 0 5px rgb(53, 51, 51);
-  }
-  body::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: repeating-linear-gradient(0deg, rgba(246, 246, 246, 0.15), rgb(255, 255, 255) 1px, transparent 1px, transparent 2px);
-    pointer-events: none;
-  }
-  
-  ::selection {
-    background: #0080FF;
-    text-shadow: none;
-    height: 300px;
-    width: 300px;
-  }
-  
-  pre {
-    margin: 0;
-  }
-  
-  button, .nb-button{
-      font: 1.3rem Inconsolata, monospace;
-      text-shadow: 0 0 5px #C8C8C8;
-      background-color: transparent;
-      color: rgb(250, 124, 6);
-      border: 2px solid rgb(250, 124, 6);
-      padding: 5px;
-      margin: 2px;
-  }
-  button:hover{
-    color: white;
-    cursor: pointer;
-  }
-  
-  /* a {text-decoration: none; color: orange;} */
-  a:link { text-decoration: none; color:rgb(250, 124, 6); }
-  a:visited { text-decoration: none; color:rgb(250, 124, 6); }
-  a:hover { text-decoration: none; color:rgb(250, 124, 6); }
-  a:focus { text-decoration: none; color:rgb(250, 124, 6); }
-  
-  .navList {
-      list-style-type: none;
-      display: flex;
-      border: 1px solid lightgray;
-      padding: 1em;
-  }
-  
-  .navList__route {
-      margin: 0 0.5em;
-  }
-  
-  .active {
-      text-decoration: underline;
-  }
-  
-  .scrollbox {
-      height:30%;
-      width:60%;
-      border:1px solid rgb(250, 124, 6);
-      /* overflow:auto; */
-  }
-  
-  .commandsscrollbox {
-      height:40%;
-      width:75%;
-  }
-  
-  .listscrollbox {
-      height:40%;
-      width:40%;
-  }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  
-  #description {
-      height: 12em;
-      width: 50em;
-  }
-  .textarea {
-    /* width: 20%; */
-    height: 150px;
-    padding: 12px 20px;
-    overflow: hidden;
-    box-sizing: border-box;
-    border: 2px solid rgb(250, 124, 6);
-    border-radius: 4px;
-    background-color: #686060;
-  }
-  .topic-card{
-    flex-basis: 28%;
-  }
-  .flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  .textcontainer {
-    vertical-align: bottom;
-    /* white-space: wrap; */
-    overflow: hidden;
-    border-left:1em solid transparent;
-    border-right:1em solid transparent;
-  }
-  .img {
-    width: 300px;
-    height: 300px;
-  }
-  .logo {
-    height: 150px;
-    width: 150px;
-  }
-  .bigbrother {
-    display: flex;
-  }
-  .home-logo-container {
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
-  }
-  .home-logo {
-    object-fit: fill;
-    flex-basis: 100%;
-    align-self: center;
-  }
+  background: url(../../static/styles/Michelle_BG.png) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+h1{
+  background-color: white;
+  padding: 10px;
+  width: fit-content;
+  margin: auto;
+  border-radius: .5;
+  border: 5px solid black;
+  border-radius: 5px;
+}
+
+div.my_project_card{
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+h3{
+  background-color: white;
+  padding: 10px;
+  width: fit-content;
+  margin: auto;
+  border-radius: .5;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+button.dashboard{
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+nav{
+  border-bottom: 2px solid black;
+}
+
+div.form-card{
+  border: 2px solid black;
+}
+
+div.subject-card{
+  border: 2px solid black;
+}
+
+div.detail-card{
+  border: 2px solid black;
+}
+
+div.login-card{
+  border: 2px solid black;
+}
+
+div.register-card{
+  border: 2px solid black;
+}
+
+label{
+  min-width: 150px;
+}
+
+h6.card-title{
+  min-width: 150px;
+}
+
+div.pills{
+  margin-bottom: 10px;
+}
+
+img.home-image{
+  margin: 10px;
+}

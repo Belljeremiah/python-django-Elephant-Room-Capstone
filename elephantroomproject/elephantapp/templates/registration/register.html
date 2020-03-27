@@ -1,63 +1,103 @@
 {% extends 'shared/base.html' %}
-{% load static %}
 
 {% block content %}
-    <h2>Register As a New User a Profile will be automatically Generated for You</h2>
-    
-    
-    <form action="{% url 'elephantapp:register' %}" method="post">
-    {% csrf_token %}
-<!--     These values will be saved as part of a new User instance -->
+<div class="card register-card" style="width: 20rem; margin-left: auto; margin-right: auto; margin-top: 50px;">
+    <div class="card-body" style="margin-left: auto; margin-right: auto; ">
+        <h2 class="card-title"><center>Register As a New User a Profile will be automatically Generated for You</center></h2>
+        <form action="{% url 'elephantapp:register' %}" method="post">
+            {% csrf_token %}
+    <!--     These values will be saved as part of a new User instance -->
+            <div class="form-group">
+                <label for="username">Username: </label>
+                <input type="text" placeholder="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password: </label>
+                <input type="password" placeholder="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email: </label>
+                <input type="email" placeholder="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="first_name">First Name: </label>
+                <input type="text" placeholder="first name" name="first_name" required>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name: </label>
+                <input type="text" placeholder="last name" name="last_name" required>
+            </div>
+        <!--     This value will be saved on the new Profile instance -->
         <fieldset>
-            <label for="username">Username: </label>
-            <input type="text" placeholder="username" name="username">
-        </fieldset>
-        <fieldset>
-            <label for="password">Password: </label>
-            <input type="text" placeholder="password" name="password">
-        </fieldset>
-        <fieldset>
-            <label for="email">Email: </label>
-            <input type="email" placeholder="email" name="email">
-        </fieldset>
-        <fieldset>
-            <label for="first_name">First Name: </label>
-            <input type="text" placeholder="first name" name="first_name">
-        </fieldset>
-        <fieldset>
-            <label for="last_name">Last Name: </label>
-            <input type="text" placeholder="last name" name="last_name">
-        </fieldset>
-    <!--     This value will be saved on the new Profile instance -->
-        <fieldset>
-            <label for="age">Age: </label>
-            <input type="number" placeholder="age" name="age">
-        </fieldset>
-        <fieldset>
-            <label for="relationship_status">Relationship Status: </label>
-            <input type="text" placeholder="relationship status" name="relationship_status">
-        </fieldset>
-        <fieldset>
-            <label for="political_affiliation">Political Affiliation: </label>
-            <input type="text" placeholder="political affiliation" name="political_affiliation">
-        </fieldset>
-        <fieldset>
-            <label for="evidential_preference">Evidential Preference: </label>
-            <input type="text" placeholder="evidential preference" name="evidential_preference">
-        </fieldset>
-        <fieldset>
-            <label for="debate_style_preference">Debate Style Preference: </label>
-            <input type="text" placeholder="debate style preference" name="debate_style_preference">
-        </fieldset>
-        <fieldset>
-            <label for="avatar_image">Avatar Image: </label>
-            <input type="text" placeholder="avatar image" name="avatar_image">
-        </fieldset>
-        <fieldset>
-            <label for="theological_affiliation">Theological Affiliation: </label>
-            <input type="text" placeholder="theological affiliation" name="theological_affiliation">
-        </fieldset>
-        <fieldset>
-            <input type="submit" value="Register" />
-    </form>
+            <div class="form-group">
+                <label for="age">Age: </label>
+                <input type="number" placeholder="age" name="age">
+            </div>
+            <div class="form-group">
+                <label for="relationship_status">Relationship Status: </label>
+                <select id="relationship_status" type="text" name="relationship_status" required>
+                    <option value="Married">Married</option>
+                    <option value="Single">Single</option>
+                    <option value="Complicated">Complicated</option>
+                    <option value="Prefer Not to Say">Prefer Not to Say</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="political_affiliation">Political Affiliation: </label>
+                <select id="political_affiliation" type="text" name="political_affiliation" required>
+                    <option value="Democrat">Democrat</option>
+                    <option value="Republican">Republican</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="Libertarian">Libertarian</option>
+                    <option value="Prefer Not to Say">Prefer Not to Say</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="evidential_preference">Evidential Preference: </label>
+                <select id="evidential_preference" type="text" name="evidential_preference" required>
+                    <option value="Cited Source">Cited Source</option>
+                    <option value="Anecdote or Experience Story">Anecdote or Experience Story</option>
+                    <option value="Ethos">Ethos: Or an Appeal to Ethics</option>
+                    <option value="Pathos">Pathos: Or an Appeal to Emotion</option>
+                    <option value="Logos">Logos: Or an Appeal to Logic</option>
+                    <option value="Prefer Not to Say">Prefer Not to Say</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="debate_style_preference">Debate Style Preference: </label>
+                <select id="debate_style_preference" type="text" name="debate_style_preference" required>
+                    <option value="In Person No Audience">In Person No Audience</option>
+                    <option value="Anonymous Online">Anonymous Online</option>
+                    <option value="Public Debate">Public Debate</option>
+                    <option value="Group Debate In Person">Group Debate In Person</option>
+                    <option value="Prefer Not to Say">Prefer Not to Say</option>
+                </select> 
+            </div>
+            <div class="form-group">
+                <label for="avatar_image">Avatar Image: </label>
+                <input type="text" placeholder="avatar image" name="avatar_image" required>
+            </div>
+            <div class="form-group">
+                <label for="theological_affiliation">Theological Affiliation: </label>
+                <select id="theological_affiliation" type="text" name="theological_affiliation" required>
+                    <option value="Atheism">Atheism</option>
+                    <option value="Agnosticism">Agnosticism</option>
+                    <option value="Christian">Christian</option>
+                    <option value="Islamist">Islamist</option>
+                    <option value="Hinduism">Hinduism</option>
+                    <option value="Buddhism">Buddhism</option>
+                    <option value="Taoism">Taoism</option>
+                    <option value="Confucianism">Confucianism</option>
+                    <option value="Jainism">Jainism</option>
+                    <option value="Shinto">Shinto</option>
+                    <option value="Judaism">Judaism</option>
+                    <option value="Sikhism">Sikhism</option>    
+                </select>
+            </div>
+            </fieldset>
+                <center><button type="submit" class="btn btn-primary btn-md" value="Register" /></center>
+            
+            </form>
+        </div>
+    </div>
 {% endblock %}
