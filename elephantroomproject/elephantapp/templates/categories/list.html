@@ -53,7 +53,7 @@
                       <h5> Title: {{topic.title}} </h5>
                       <h6>Topic Description</h6>
                       <textarea class="textarea"> {{topic.blurb}}</textarea>
-                        <form action="{% url 'elephantapp:category' category.id %}" method="GET">
+                        <form action="{% url 'elephantapp:topic' topic.category.id %}" method="GET">
                             {% csrf_token %}
                             <button class="btn btn-warning btn-sm">Details</button>
                         </form>
