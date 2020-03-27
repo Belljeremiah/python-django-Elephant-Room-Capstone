@@ -1,34 +1,38 @@
 {% extends 'shared/base.html' %}
-{% load static  %}
+
 {% block content %}
 
-    <fieldset id="topic-details">
-      <h3>Title: {{topic.title}}</h3>
-      <h4>Topic Description: {{topic.blurb}}</h4>
-      <img class="img" src="{{topic.image_link}}" alt="topic image">
-      <h4>Associated Category: {{category.name}}</h4>
-      <h4>Stance: {{topic.stance_text_body}}</h4>
-      {% comment %} <a href="{% url topic.resource_link %}"> {% endcomment %}
-      <h4>Resource Url: {{topic.resource_link}}</h4>
-      {% comment %} </a> {% endcomment %}
-      <h4>Is Free {{topic.is_free_resource}}</h4>
-      <h4>I am a Proponent of: {{topic.is_proponent}}</h4>
-      <h4>This is a story or anecdote: {{topic.is_anecdote}}</h4>
-      <h4>Anecdote: {{topic.anecdote_body}}</h4>
-      <h4>This is a Citable Source: {{topic.is_citable}}</h4>
-    </fieldset>
-
+    <body>
+      <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto">
+        <div class="col mb-4">
+          <div class="card h-100 my_project_card">
+            <img class="img" src="{{topic.image_link}}" class="card-img-top" alt="topic image">
+            <div class="card-body">
+              <h2><span style="color:black">Title:</span> <span style="color:blue">{{topic.title}}</span></h2>
+              <h4><span style="color:black">Topic Description:</span> <span style="color:blue">{{topic.blurb}}</span></h4>
+              <h4><span style="color:black">Associated Category:</span> <span style="color:blue">{{category.name}}</span></h4>
+              <h4><span style="color:black">Stance:</span> <span style="color:blue">{{topic.stance_text_body}}</span></h4>
+              <h4><span style="color:black">Resource Url:</span> <span style="color:blue">{{topic.resource_link}}</span></h4>
+              <h4><span style="color:black">Is Free:</span> <span style="color:blue">{{topic.is_free_resource}}</span></h4>
+              <h4><span style="color:black">I am a Proponent of:</span> <span style="color:blue">{{topic.is_proponent}}</span></h4>
+              <h4><span style="color:black">This is a story or anecdote:</span> <span style="color:blue">{{topic.is_anecdote}}</span></h4>
+              <h4><span style="color:black">Anecdote:</span> <span style="color:blue">{{topic.anecdote_body}}</span></h4>
+              <h4><span style="color:black">This is a Citable Source:</span> <span style="color:blue">{{topic.is_citable}}</span></h4>
+            </div>
+          </div>
+        </div>
+      </div>
     <section id="topic-actions">
-  <form action="{% url 'elephantapp:topic' topic.id %}" method="POST">
-    {% csrf_token %}
-    <input type="hidden" name="actual_method" value="DELETE">
-    <button>Delete</button>
-  </form>
+      <form action="{% url 'elephantapp:topic' topic.id %}" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="actual_method" value="DELETE">
+      <button class="btn btn-warning btn-lg">Delete</button>
+      </form>
 
-  <form action="{% url 'elephantapp:topic_edit_form' topic.id %}" method="GET">
-    {% csrf_token %}
-    <button>Edit</button>
-  </form>
+    <form action="{% url 'elephantapp:topic_edit_form' topic.id %}" method="GET">
+      {% csrf_token %}
+      <button class="btn btn-warning btn-lg">Edit</button>
+    </form>
   </section>
   </body>
 </html>

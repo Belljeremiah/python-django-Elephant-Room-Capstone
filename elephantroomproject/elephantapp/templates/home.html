@@ -4,8 +4,8 @@
 {% block content %}
     <h1>Welcome to the Elephant Room</h1>
     <div class="bigbrother">
-        <div class="home-logo-container">
-            <image class="home-logo" src="{% static 'images/erlogo.png' %}" alt="Elephant Room Logo">
+        <div>
+            <image class="home-logo-img" src="{% static 'images/erlogo.png' %}" alt="Elephant Room Logo">
         </div>
     </div>
     {% if user.is_authenticated == False %}
