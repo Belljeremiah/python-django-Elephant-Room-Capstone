@@ -1,7 +1,7 @@
 .navList {
   list-style-type: none;
   display: flex;
-  border: px solid lightgray;
+  border: px solid black;
   padding: 1em;
   width: 100%;
 }
@@ -15,6 +15,7 @@
 }
 
 body {
+  background-color: black;
   background-size: cover;
   height: 100%;
   /* overflow: hidden; */

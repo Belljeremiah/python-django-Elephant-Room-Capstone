@@ -3,11 +3,11 @@
 {% block content %}
 
         <!-- Creating a Button To Activate a Modal -->
-        <left><button type="button" class="btn btn-primary btn-md dashboard" data-toggle="modal" data-target="#exampleModal">
+        <left><button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#exampleModal">
         Create a Category
         </button></left></a>
 
-        <left><a href="{% url 'elephantapp:topic_form' %}"><button type="button" class="btn btn-primary btn-md dashboard" data-toggle="modal" data-target="#exampleModal">
+        <left><a href="{% url 'elephantapp:topic_form' %}"><button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#exampleModal">
         Create a Topic
         </button></left></a>
 
@@ -53,6 +53,10 @@
                       <h5> Title: {{topic.title}} </h5>
                       <h6>Topic Description</h6>
                       <textarea class="textarea"> {{topic.blurb}}</textarea>
+                        <form action="{% url 'elephantapp:category' category.id %}" method="GET">
+                            {% csrf_token %}
+                            <button class="btn btn-warning btn-sm">Details</button>
+                        </form>
                     </div>
                     <div class="card-footer text-muted">
                             <div>

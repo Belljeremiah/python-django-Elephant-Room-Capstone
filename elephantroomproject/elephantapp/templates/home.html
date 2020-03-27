@@ -10,8 +10,8 @@
     </div>
     {% if user.is_authenticated == False %}
     
-        <a href="{% url 'elephantapp:login' %}"><button>Login</button></a>
-        <a href="{% url 'elephantapp:register' %}"><button>Register</button></a>
+        <a href="{% url 'elephantapp:login' %}"><button class="btn btn-warning btn-lg">Login</button></a>
+        <a href="{% url 'elephantapp:register' %}"><button class="btn btn-warning btn-lg">Register</button></a>
     
     {% endif %}
 {% endblock content %}

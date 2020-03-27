@@ -1,8 +1,6 @@
 {% extends 'shared/base.html' %}
-{% load static  %}
+
 {% block content %}
-<!DOCTYPE html>
-<html>
     <h1 class='title'>{{category.name}}</h1>
     <body>
       <h3>User Name: {{category.user}}</h3>
@@ -13,14 +11,14 @@
       <form action="{% url 'elephantapp:category' category.id %}" method="POST">
         {% csrf_token %}
         <input type="hidden" name="actual_method" value="DELETE">
-        <button>Delete</button>
+        <button class="btn btn-warning btn-lg">Delete</button>
       </form>
-        
       <form action="{% url 'elephantapp:category_edit_form' category.id %}" method="GET">
         {% csrf_token %}
-        <button>Edit</button>
+        <button class="btn btn-warning btn-lg">Edit</button>
       </form>
       </section>
     </body>
 </html>
 {% endblock %}
+        

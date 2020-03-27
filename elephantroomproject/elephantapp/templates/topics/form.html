@@ -1,55 +1,71 @@
 {% extends 'shared/base.html' %}
-{% load static %}
+
 
 {% block content %}
-    <h1>Create a Topic</h1>
 
     {% if topic.id is not None %}
-    <form action="{% url 'elephantapp:topic' topic.id %}" method="post">
+    <div class="card form-card" style="margin-left: auto; margin-right: auto; margin-top: 50px; max-width: 1000px;">
+        <div class="card-body">
+            <h3>Create a Topic</h3>
+            <form action="{% url 'elephantapp:topic' topic.id %}" method="post">
     {% else %}
-    <form action="{% url 'elephantapp:topics' %}" method="post">
+            <div class="card form-card" style="margin-left: auto; margin-right: auto; margin-top: 50px; max-width: 1000px;">
+                <form action="{% url 'elephantapp:topics' %}" method="post">
     {% endif %}
-      {% csrf_token %}
-        <fieldset>
-            <label for="title">Title: {{ topic.title }} </label>
+    {% csrf_token %}
+        <div class="form-group row">
+            <div class="col-sm-10">
+            <label for="title" class="col-sm-2 col-form-label">Title: {{ topic.title }} </label>
             <input id="title" type="text" name="title" value="{{ topic.title }}">
-        </fieldset>
-        <fieldset>
-            <label for="image_link">Image Url: {{ topic.image_link }} </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+            <label for="image_link" class="col-sm-2 col-form-label">Image Url: {{ topic.image_link }} </label>
             <input id="image_link" type="text" name="image_link" value="{{ topic.image_link }}">
-        </fieldset>
-        <fieldset>
-            <label for="stance_text_body">Stance: {{ topic.stance_text_body }} </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+            <label for="stance_text_body" class="col-sm-2 col-form-label">Stance: {{ topic.stance_text_body }} </label>
             <input id="stance_text_body" type="text" name="stance_text_body" value="{{ topic.stance_text_body }}">
-        </fieldset>
-        <fieldset>
-            <label for="blurb">A brief summary: {{ topic.blurb }} </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+            <label for="blurb" class="col-sm-2 col-form-label">A brief summary: {{ topic.blurb }} </label>
             <input id="blurb" type="text" name="blurb" value="{{ topic.blurb }}">
-        </fieldset>
-        <fieldset>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
         <h3>Anecdotes or Life Experience Evidence</h3>
-            <fieldset>
-                <label for="is_anecdote">This is A story from my Life or an Anecdote:(click for true)</label>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                <label for="is_anecdote" class="col-sm-2 col-form-label">This is A story from my Life or an Anecdote:(click for true)</label>
                 {% if topic.is_anecdote is not None %}
-                <input id="is_anecdote" type="radio" name="is_anecdote" value={{ topic.is_anecdote }}>
+                    <input id="is_anecdote" type="radio" name="is_anecdote" value={{ topic.is_anecdote }}>
                 {% else %}
-                <input id="is_anecdote" type="radio" name="is_anecdote" value=True>
-                {% endif %} 
-                <br> 
-                <label for="anecdote_body">Your Story or Experience: {{ topic.anecdote_body }} </label>
-                <input id="anecdote_body" type="text" name="anecdote_body" value="{{ topic.anecdote_body }}">
-            </fieldset>
-        </fieldset>
+                    <input id="is_anecdote" type="radio" name="is_anecdote" value=True>
+                {% endif %}
+                </div>
+            </div> 
+            <div class="form-group row">
+                <div class="col-sm-10"> 
+                <label for="anecdote_body" class="col-sm-2 col-form-label">Your Story or Experience: {{ topic.anecdote_body }} </label>
+                    <input id="anecdote_body" type="text-area" class="form-control" name="anecdote_body" value="{{ topic.anecdote_body }}">
+            </div>
+        </div>
         <fieldset>
         <h3>Citable Sources and Evidence</h3>
             <fieldset>
-                <label for="is_citable">Peer Reviewed Source(Click for True): {{ topic.is_citable }} </label>
+                <label for="is_citable" class="col-sm-2 col-form-label">Peer Reviewed Source(Click for True): {{ topic.is_citable }} </label>
                 {% if topic.is_citable is not None %}
                 <input id="is_citable" type="radio" name="is_citable" value={{ topic.is_citable }}>
                 {% else %}
                 <input id="is_citable" type="radio" name="is_citable" value=True>
                 {% endif %}
-                <label for="is_free_resource">Free to view(Click for True): {{ topic.is_free_resource }} </label>
+                <label for="is_free_resource" class="col-sm-2 col-form-label">Free to view(Click for True): {{ topic.is_free_resource }} </label>
                 {% if topic.is_free_resource is not None %}
                 <input id="is_free_resource" type="radio" name="is_free_resource" value={{ topic.is_free_resource }}>
                 {% else %}
@@ -57,12 +73,12 @@
                 {% endif %}
             </fieldset>
             <fieldset>
-                <label for="resource_link">Resource Url: {{ topic.resource_link }} </label>
+                <label for="resource_link" class="col-sm-2 col-form-label">Resource Url: {{ topic.resource_link }} </label>
                 <input id="resource_link" type="url" name="resource_link" value="{{ topic.resource_link }}">
             </fieldset>
         </fieldset>
         <fieldset>  
-            <label for="is_proponent">I am a proponent(Click for True): {{ topic.is_proponent}} </label>
+            <label for="is_proponent" class="col-sm-2 col-form-label">I am a proponent(Click for True): {{ topic.is_proponent}} </label>
             {% if topic.is_proponent is not None %}
             <input id="is_proponent" type="radio" name="is_proponent" value={{ topic.is_proponent }}>
             {% else %}
@@ -81,9 +97,9 @@
 
         {% if topic.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
-            <button type="submit" value="Update">Update</button>
+            <button class="btn btn-warning btn-lg" type="submit" value="Update">Update</button>
         {% else %}
-            <button type="submit" value="Add It">Add It</button>
+            <button class="btn btn-warning btn-lg" type="submit" value="Add It">Add It</button>
         {% endif %}
     </form>
     {% endblock %}

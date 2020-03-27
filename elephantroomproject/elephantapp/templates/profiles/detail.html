@@ -1,23 +1,29 @@
 {% extends 'shared/base.html' %}
-{% load static  %}
-{% block content %}
-<!DOCTYPE html>
-<html>
-    <h1 class='title'>{{profile.user}}</h1>
-    <body>
-      <h1>User Name: {{profile.user}}</h1>
-      <h1>Profile Age: {{profile.age}}</h1>
-      <h1>Profile Relationship Status: {{profile.relationship_status}}</h1>
-      <h1>Profile Political Affiliation: {{profile.political_affiliation}}</h1>
-      <h1>Profile Evidence Preference: {{profile.evidential_preference}}</h1>
-      <h1>Profile Debate Style Preference: {{profile.debate_style_preference}}</h1>
-      <img class="img" src="{{profile.avatar_image}}" alt="avatar image"/>
-      <h1>Profile Theological Affiliation: {{profile.theological_affiliation}}</h1>
 
+{% block content %}
+
+    <body>
+      <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto">
+        <div class="col mb-4">
+          <div class="card h-100 my_project_card">
+            <img class="img" src="{{profile.avatar_image}}" class="card-img-top" alt="avatar image">
+            <div class="card-body">
+                <a href="{% url 'elephantapp:profile' profile.id %}">  
+                <h4><span style="color:black">Age:</span> {{profile.age}}</h4>
+                <h4><span style="color:black">Relationship Status:</span> {{profile.relationship_status}}</h4>
+                <h4><span style="color:black">Political Affiliation:</span> {{profile.political_affiliation}}</h4>
+                <h4><span style="color:black">Evidential Preference:</span> {{profile.evidential_preference}}</h4>
+                <h4><span style="color:black">Debate Style Preference:</span> {{profile.debate_style_preference}}</h4>
+                <h4><span style="color:black">Theological Affiliation:</span> {{profile.theological_affiliation}}</h4>
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
       <section id="profile-actions">
         <form action="{% url 'elephantapp:profile_edit_form' profile.id %}" method="GET">
         {% csrf_token %}
-        <button>Edit</button>
+        <button class="btn btn-warning btn-lg">Edit</button>
         </form>
       </section>
     </body>

@@ -11,12 +11,12 @@
         <img class="img" src="{{profile.avatar_image}}" class="card-img-top" alt="avatar image">
         <div class="card-body">
             <a href="{% url 'elephantapp:profile' profile.id %}">  
-            <h4 style="margin-left:10px;">Age: {{profile.age}}</h4>
-            <h4><span class="greytext">Relationship Status:</span> {{profile.relationship_status}}</h4>
-            <h4><span class="greytext">Political Affiliation:</span> {{profile.political_affiliation}}</h4>
-            <h4><span class="greytext">Evidential Preference:</span> {{profile.evidential_preference}}</h4>
-            <h4><span class="greytext">Debate Style Preference:</span> {{profile.debate_style_preference}}</h4>
-            <h4><span class="greytext">Theological Affiliation:</span> {{profile.theological_affiliation}}</h4>
+            <h4><span style="color:black">Age:</span> {{profile.age}}</h4>
+            <h4><span style="color:black">Relationship Status:</span> {{profile.relationship_status}}</h4>
+            <h4><span style="color:black">Political Affiliation:</span> {{profile.political_affiliation}}</h4>
+            <h4><span style="color:black">Evidential Preference:</span> {{profile.evidential_preference}}</h4>
+            <h4><span style="color:black">Debate Style Preference:</span> {{profile.debate_style_preference}}</h4>
+            <h4><span style="color:black">Theological Affiliation:</span> {{profile.theological_affiliation}}</h4>
             </a>
         </div>
       </div>
@@ -26,8 +26,8 @@
         <fieldset>
           <h3>Think of Categories as your room and Topics as the Elephants in them you want to discuss.</h3>
         </fieldset>
-        <a href="{% url 'elephantapp:category_form' %}"><button type="button" class="btn btn-primary">Create a Category</button></a>
-        <a href="{% url 'elephantapp:topic_form' %}"><button type="button" class="btn btn-primary">Create a Topic</button></a>
+        <a href="{% url 'elephantapp:category_form' %}"><button type="button" class="btn btn-warning">Create a Category</button></a>
+        <a href="{% url 'elephantapp:topic_form' %}"><button type="button" class="btn btn-warning">Create a Topic</button></a>
     {% endfor %}
   </body>
 </html>
