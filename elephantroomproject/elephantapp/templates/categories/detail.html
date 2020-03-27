@@ -1,24 +1,33 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-    <h1 class='title'>{{category.name}}</h1>
+
     <body>
-      <h3>User Name: {{category.user}}</h3>
-      <h3>Category Description: {{category.blurb}}</h3>
-      <img src="{{category.category_icon}}" alt="category icon"/>
-        
-      <section id="category-actions">
-      <form action="{% url 'elephantapp:category' category.id %}" method="POST">
-        {% csrf_token %}
-        <input type="hidden" name="actual_method" value="DELETE">
-        <button class="btn btn-warning btn-lg">Delete</button>
-      </form>
-      <form action="{% url 'elephantapp:category_edit_form' category.id %}" method="GET">
-        {% csrf_token %}
-        <button class="btn btn-warning btn-lg">Edit</button>
-      </form>
-      </section>
-    </body>
+      <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto">
+        <div class="col mb-4">
+          <div class="card h-100 my_project_card">
+            <img class="img" src="{{category.category_icon}}" class="card-img-top" alt="category image">
+            <div class="card-body">
+              <h2 class='title'>{{category.name}}</h2>
+              <h4><span style="color:black">User Name:</span> <span style="color:blue">{{category.user}}</span></h4>
+              <h4 class="text-area"><span style="color:black">Category Description:</span> <span style="color:blue">{{category.blurb}}</span></h4>
+            </div>
+          </div>
+        </div>
+      </div>    
+    <section id="category-actions">
+    <form action="{% url 'elephantapp:category' category.id %}" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="actual_method" value="DELETE">
+      <button class="btn btn-warning btn-lg">Delete</button>
+    </form>
+    <form action="{% url 'elephantapp:category_edit_form' category.id %}" method="GET">
+      {% csrf_token %}
+      <button class="btn btn-warning btn-lg">Edit</button>
+    </form>
+  </section>
+  </body>
 </html>
 {% endblock %}
+                
         

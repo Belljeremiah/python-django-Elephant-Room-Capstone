@@ -96,5 +96,11 @@ img.home-image{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.img {
+  max-width: 80%;
+  max-height: 80%;
 }

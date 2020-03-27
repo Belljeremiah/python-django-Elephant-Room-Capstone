@@ -38,9 +38,10 @@
     </div>
         
     {% for category in all_categories %}
-        
+        <a href="{% url 'elephantapp:category' category.id %}">
         <h4 style="margin-left:15px;" classname"category_name">{{ category.name }}</h4>
         <h5 style="margin-left:15px;" classname"category_blurb">Description:{{ category.blurb }}</h5>
+        </a>
             <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto">
             
             {% for topic in all_topics %}
